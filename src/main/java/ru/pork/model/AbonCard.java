@@ -23,4 +23,17 @@ public class AbonCard {
     @Column(name="expiration_begin")
     private Date expiration_begin;
 
+    @Column(name="expiration_end")
+    private Date expiration_end;
+
+    @Column(name="price")
+    private int price;
+
+    @Column(name="typeOfDiscount")
+    private byte typeOfDiscount;
+
+    @Column(name="discountPercent")
+    private int discountPercent;
+
+
 }
