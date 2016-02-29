@@ -10,12 +10,12 @@
         <id name="id" type="int" column="id">
             <generator class="native"/>
         </id>
-        <property name="cardType" column="firstName" type="string"/>
+        <!--<property name="cardType" column="cardType" type="int"/>-->
         <property name="description" column="description" type="string"/>
-        <property name="expiration_begin" column="expiration_begin" type="date"/>
-        <property name="expiration_end" column="expiration_end" type="date"/>
+        <!--<property name="expiration_begin" column="expiration_begin" type="date"/>-->
+        <!--<property name="expiration_end" column="expiration_end" type="date"/>-->
         <property name="price" column="price" type="int"/>
-        <property name="typeOfDiscount" column="typeOfDiscout" type="byte"/>
+        <property name="typeOfDiscount" column="typeOfDiscout" type="int"/>
         <property name="discountPercent" column="discountPercent" type="int"/>
     </class>
 </hibernate-mapping>

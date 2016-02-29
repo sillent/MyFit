@@ -27,7 +27,7 @@ public class Person {
     private Date birthDate;
 
 //    @Column(name="gender")
-    private byte gender;
+    private int gender;
 
 //    @Column(name="phone")
     private long phone;
@@ -42,9 +42,9 @@ public class Person {
 //    @JoinColumn(name="AbonCard_id")
     private AbonCard abonCard;
 
-    Person(){}
+    public Person(){}
 
-    public Person(String firstName, String lastName, String secondName, Date birthDate, byte gender,
+    public Person(String firstName, String lastName, String secondName, Date birthDate, int gender,
            long phone, String email, String description)
     {
         this.firstName=firstName; this.lastName=lastName; this.secondName=secondName;
@@ -93,11 +93,11 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public byte getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(byte gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
