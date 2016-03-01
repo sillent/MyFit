@@ -9,47 +9,30 @@ import java.util.Date;
 //@Entity
 //@Table(name = "Person")
 public class Person {
-//    @Id
-//    @GeneratedValue(strategy=GenerationType.IDENTITY)
-//    @Column(name = "id")
-    private int id;
 
-//    @Column(name="firstName")
+    private int id;
     private String firstName;
 
-//    @Column(name="lastName")
     private String lastName;
-
-//    @Column(name="secondName")
     private String secondName;
-
-//    @Column(name="birthDate")
     private Date birthDate;
-
-//    @Column(name="gender")
     private int gender;
-
-//    @Column(name="phone")
     private long phone;
-
-//    @Column(name="email")
     private String email;
-
-//    @Column(name="description")
     private String description;
-
-//    @ManyToOne
-//    @JoinColumn(name="AbonCard_id")
     private AbonCard abonCard;
+
+    private Date begin_date;
+    private Date expire_date;
 
     public Person(){}
 
     public Person(String firstName, String lastName, String secondName, Date birthDate, int gender,
-           long phone, String email, String description)
+           long phone, String email, String description, Date begin_date, Date expire_date)
     {
         this.firstName=firstName; this.lastName=lastName; this.secondName=secondName;
         this.birthDate=birthDate; this.gender=gender; this.phone=phone; this.email=email;
-        this.description=description;
+        this.description=description; this.begin_date=begin_date; this.expire_date=expire_date;
 
     }
 
@@ -125,6 +108,21 @@ public class Person {
         this.description = description;
     }
 
+    public Date getBegin_date() {
+        return begin_date;
+    }
+
+    public void setBegin_date(Date begin_date) {
+        this.begin_date = begin_date;
+    }
+
+    public Date getExpire_date() {
+        return expire_date;
+    }
+
+    public void setExpire_date(Date expire_date) {
+        this.expire_date = expire_date;
+    }
 
     public AbonCard getAbonCard() {
         return abonCard;

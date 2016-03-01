@@ -12,13 +12,14 @@
     <title>Абонементы</title>
 </head>
 <body>
-<center>
+<%--<center>--%>
   <form method="get" action="aboncard">
     Уникальное название абонемента: <input type="text" name="description"/><br/>
     Цена абоненмента: <input type="number" name="price"/></br>
     <input type="submit" name="Создать"></br>
   </form>
-</center>
+<%--</center>--%>
+<a href="welcome.jsp">Назад</a>
 
 </body>
 </html>

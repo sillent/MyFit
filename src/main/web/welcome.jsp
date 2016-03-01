@@ -11,7 +11,8 @@
     <title>Welcome</title>
 </head>
 <body>
-<center><H1>Фитнес Центр "Солнышко"</H1>
+<%--<center>--%>
+  <H1>Фитнес Центр "Солнышко"</H1>
 <table border="1">
   <tr>
     <th>Управление Абонементом</th>
@@ -27,6 +28,6 @@
     <td><a href="clients_list.jsp">Список</a></td>
   </tr>
 </table>
-</center>
+<%--</center>--%>
 </body>
 </html>
