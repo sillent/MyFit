@@ -13,5 +13,9 @@
         <mapping resource="AbonCard.hbm.xml"/>
         <mapping resource="Person.hbm.xml"/>
 
+        <mapping resource="ClubProgram.hbm.xml"/>
+        <mapping resource="Contracts.hbm.xml"/>
+        <mapping resource="Client.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>
