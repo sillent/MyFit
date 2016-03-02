@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ru.pork.model.Contracts" table="Contracts">
+        <meta attribute="class-description">
+            This class describe Contracts.
+        </meta>
+        <id name="id" column="id" type="int">
+            <generator class="native"/>
+        </id>
+        <property name="startDate" column="startDate" type="date"/>
+        <property name="daysActive" column="daysActive" type="int"/>
+        <property name="status" column="status" type="int"/>
+    </class>
+</hibernate-mapping>
