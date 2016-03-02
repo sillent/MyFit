@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.pork.model.Client" table="Client">
+        <meta attribute="class-description">
+            This class describe Client detail.
+        </meta>
+        <id name="id" column="id" type="int">
+            <generator class="native"/>
+        </id>
+        <set name="contractses" cascade="all">
+            <key column="client_id"/>
+            <one-to-many class="ru.pork.model.Contracts"/>
+        </set>
+        <many-to-one name="program" column="program" class="ru.pork.model.ClubProgram" not-null="true"/>
+        <property name="firstName" column="firstName" type="string"/>
+        <property name="lastName" column="lastName" type="string"/>
+        <property name="secondName" column="secondName" type="string"/>
+        <property name="birthDate" column="birthDate" type="date"/>
+        <property name="gender" column="gender" type="int"/>
+        <property name="phone" column="phone" type="long"/>
+        <property name="email" column="email" type="string"/>
+        <property name="description" column="description" type="string"/>
+    </class>
+
+</hibernate-mapping>
