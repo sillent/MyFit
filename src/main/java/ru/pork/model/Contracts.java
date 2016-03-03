@@ -13,8 +13,7 @@ public class Contracts {
     private int status;
 
     public Contracts() {}
-    public Contracts(int id, Date startDate, int daysActive, int status) {
-        this.id = id;
+    public Contracts( Date startDate, int daysActive, int status) {
         this.startDate = startDate;
         this.daysActive = daysActive;
         this.status = status;

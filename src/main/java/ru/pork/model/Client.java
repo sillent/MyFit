@@ -106,7 +106,7 @@ public class Client {
         this.description = description;
     }
 
-    public Set<Contracts> getContractses() {
+    public Set getContractses() {
         return contractses;
     }
 
