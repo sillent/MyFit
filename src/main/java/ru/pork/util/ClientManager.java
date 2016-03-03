@@ -5,19 +5,16 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.jpa.event.internal.jpa.CallbackBuilderLegacyImpl;
 import ru.pork.model.Client;
+import ru.pork.model.Contracts;
 import ru.pork.servlet.DatabaseConfigurator;
 
-import javax.swing.text.html.HTMLDocument;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by santa on 02.03.16.
- */
+
 public class ClientManager {
     private SessionFactory factory;
 
@@ -120,12 +117,13 @@ public class ClientManager {
         Session session=factory.openSession();
 
         Client client = new Client(description,email,phone,gender,birthDate,secondName,lastName,firstName);
+        tx=session.beginTransaction();
         try {
-            tx=session.beginTransaction();
             session.save(client);
             tx.commit();
             return true;
         } catch (HibernateException he) {
+            tx.rollback();
             he.printStackTrace();
             return false;
         } finally {
@@ -138,8 +136,8 @@ public class ClientManager {
         Session session=factory.openSession();
 
         List<Client> list = new ArrayList<Client>();
+        tx=session.getTransaction();
         try {
-            tx=session.getTransaction();
             List getList = session.createQuery("from Client").list();
             for (Iterator iterator = getList.iterator(); iterator.hasNext(); ) {
                 list.add((Client)iterator.next());
@@ -149,8 +147,46 @@ public class ClientManager {
             return list;
         } catch (HibernateException he) {
             he.printStackTrace();
+            tx.rollback();
             session.close();
             return null;
+        }
+    }
+
+    public boolean delClient(int id) {
+        Transaction tx;
+        Session session=factory.openSession();
+        tx=session.beginTransaction();
+        try {
+            Client client=session.get(Client.class,id);
+            session.delete(client);
+            tx.commit();
+            session.close();
+            return true;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            tx.rollback();
+            session.close();
+            return false;
+        }
+    }
+
+    public boolean addContract(Contracts contracts, int id) {
+        Transaction tx;
+        Session session = factory.openSession();
+        tx = session.beginTransaction();
+        try {
+            Client client = session.get(Client.class, id);
+            client.getContractses().add(contracts);
+            session.update(client);
+            tx.commit();
+            session.close();
+            return true;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            tx.rollback();
+            session.close();
+            return false;
         }
     }
 
