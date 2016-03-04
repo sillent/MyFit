@@ -8,7 +8,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="ru.pork.util.AbonCardManager" %>
+<%@ page import="ru.pork.util.ClientManager" %>
+<%@ page import="ru.pork.model.Client" %>
 <%@ page import="java.util.List" %>
 <html>
 <head>
@@ -16,12 +17,11 @@
 
 </head>
 <body>
-<jsp:useBean id="obj" class="ru.pork.util.AbonCardManager" scope="page"/>
+<jsp:useBean id="obj" class="ru.pork.util.ClientManager" scope="page"/>
 <%
-    AbonCardManager manager=new AbonCardManager();
-    List<AbonCard> list=manager.listAllAbonCards();
+
 %>
-<form action="/person" method="get">
+<form action="/client" method="get">
     <p>
         Фамилия: <input type="text" name="firstName"/><br/>
         Имя: <input type="text" name="lastName"/><br/>
