@@ -24,6 +24,7 @@ public class AbonCardController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
         PrintWriter pw = resp.getWriter();
+
         String desc = null;
         Integer price = null;
         if (req.getParameter("description").length() > 0) {
