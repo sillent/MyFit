@@ -8,8 +8,7 @@ public class ClubProgram {
     private String name;
 
     public ClubProgram() {}
-    public ClubProgram(int id, String name) {
-        this.id = id;
+    public ClubProgram(String name) {
         this.name = name;
     }
 
