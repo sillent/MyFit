@@ -9,22 +9,31 @@
         <listener-class>ru.pork.servlet.HibernateListener</listener-class>
     </listener>
 
-    <servlet>
-        <servlet-name>aboncardcontroller</servlet-name>
-        <servlet-class>ru.pork.servlet.AbonCardController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>personcontroller</servlet-name>
-        <servlet-class>ru.pork.servlet.PersonController</servlet-class>
-    </servlet>
+    <!--<servlet>-->
+        <!--<servlet-name>aboncardcontroller</servlet-name>-->
+        <!--<servlet-class>ru.pork.servlet.AbonCardController</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet>-->
+        <!--<servlet-name>personcontroller</servlet-name>-->
+        <!--<servlet-class>ru.pork.servlet.PersonController</servlet-class>-->
+    <!--</servlet>-->
 
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>aboncardcontroller</servlet-name>-->
+        <!--<url-pattern>/aboncard</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>personcontroller</servlet-name>-->
+        <!--<url-pattern>/person</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <servlet>
+        <servlet-name>clientcontroller</servlet-name>
+        <servlet-class>ru.pork.servlet.ClientController</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>aboncardcontroller</servlet-name>
-        <url-pattern>/aboncard</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>personcontroller</servlet-name>
-        <url-pattern>/person</url-pattern>
+        <servlet-name>clientcontroller</servlet-name>
+        <url-pattern>/client</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
