@@ -18,15 +18,6 @@ import java.util.List;
 public class ClientManager {
     private SessionFactory factory;
 
-    private String firstName;
-
-    private String lastName;
-    private String secondName;
-    private Date birthDate;
-    private int gender;
-    private long phone;
-    private String email;
-    private String description;
 
     public ClientManager() {
         try {
@@ -36,87 +27,13 @@ public class ClientManager {
         }
     }
 
-    public ClientManager(String firstName, String lastName, String secondName, Date birthDate, int gender, long phone, String email, String description) {
-        this();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.secondName = secondName;
-        this.birthDate = birthDate;
-        this.gender = gender;
-        this.phone = phone;
-        this.email = email;
-        this.description = description;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public int getGender() {
-        return gender;
-    }
-
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
-
-    public long getPhone() {
-        return phone;
-    }
-
-    public void setPhone(long phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean addClient() {
+    public boolean addClient(Client client) {
         Transaction tx;
         Session session=factory.openSession();
 
-        Client client = new Client(description,email,phone,gender,birthDate,secondName,lastName,firstName);
         tx=session.beginTransaction();
         try {
             session.save(client);
@@ -158,7 +75,7 @@ public class ClientManager {
         Session session=factory.openSession();
         tx=session.beginTransaction();
         try {
-            Client client=session.get(Client.class,id);
+            Client client=session.get(Client.class, id);
             session.delete(client);
             tx.commit();
             session.close();
@@ -187,6 +104,32 @@ public class ClientManager {
             tx.rollback();
             session.close();
             return false;
+        }
+    }
+
+    public Client findClient(long phone) {
+
+        Transaction tx;
+        Session session=factory.openSession();
+        tx=session.beginTransaction();
+        try {
+            List clients=session.createQuery("FROM Client where Client.phone=phone").list();
+            for (Iterator<Client> iterator=clients.iterator();iterator.hasNext();) {
+                Client client = (Client) iterator.next();
+                if (client.getPhone()==phone) {
+                    tx.commit();
+                    session.close();
+                    return client;
+                }
+            }
+            tx.commit();
+            session.close();
+            return null;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            tx.rollback();
+            session.close();
+            return null;
         }
     }
 
