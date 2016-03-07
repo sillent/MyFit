@@ -3,9 +3,7 @@ package ru.pork.model;
 import javax.persistence.*;
 import java.util.Date;
 
-/**
- * Created by santa on 25.02.16.
- */
+
 //@Entity
 //@Table(name = "Person")
 public class Person {

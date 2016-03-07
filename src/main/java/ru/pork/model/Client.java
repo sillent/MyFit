@@ -3,9 +3,7 @@ package ru.pork.model;
 import java.util.Date;
 import java.util.Set;
 
-/**
- * Created by santa on 02.03.16.
- */
+
 public class Client {
     private int id;
     private String firstName;
@@ -23,7 +21,7 @@ public class Client {
     private ClubProgram program;
 
     public Client(){}
-    public Client(String description, String email, long phone, int gender, Date birthDate, String secondName, String lastName, String firstName) {
+    public Client(String description, String email, long phone, int gender, Date birthDate, String secondName, String lastName, String firstName, ClubProgram program) {
         this.description = description;
         this.email = email;
         this.phone = phone;
@@ -32,6 +30,7 @@ public class Client {
         this.secondName = secondName;
         this.lastName = lastName;
         this.firstName = firstName;
+        this.program=program;
     }
 
     public int getId() {

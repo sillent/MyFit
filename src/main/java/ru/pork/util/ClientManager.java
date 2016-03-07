@@ -52,12 +52,12 @@ public class ClientManager {
         Transaction tx;
         Session session=factory.openSession();
 
-        List<Client> list = new ArrayList<Client>();
-        tx=session.getTransaction();
+        ArrayList<Client> list = new ArrayList<Client>();
+        tx=session.beginTransaction();
         try {
-            List getList = session.createQuery("from Client").list();
-            for (Iterator iterator = getList.iterator(); iterator.hasNext(); ) {
-                list.add((Client)iterator.next());
+            List lists = session.createQuery("FROM Client ").list();
+            for (Iterator<Client> iterator = lists.iterator(); iterator.hasNext(); ) {
+                list.add(iterator.next());
             }
             tx.commit();
             session.close();
@@ -107,16 +107,16 @@ public class ClientManager {
         }
     }
 
-    public Client findClient(long phone) {
+    public Client findClient(long phon) {
 
         Transaction tx;
         Session session=factory.openSession();
         tx=session.beginTransaction();
         try {
-            List clients=session.createQuery("FROM Client where Client.phone=phone").list();
+            List clients=session.createQuery("FROM Client C where C.phone="+phon).list();
             for (Iterator<Client> iterator=clients.iterator();iterator.hasNext();) {
-                Client client = (Client) iterator.next();
-                if (client.getPhone()==phone) {
+                Client client = iterator.next();
+                if (client.getPhone()==phon) {
                     tx.commit();
                     session.close();
                     return client;

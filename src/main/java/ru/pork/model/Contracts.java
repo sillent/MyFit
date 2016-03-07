@@ -2,9 +2,7 @@ package ru.pork.model;
 
 import java.util.Date;
 
-/**
- * Created by santa on 02.03.16.
- */
+
 public class Contracts {
     private int id;
 

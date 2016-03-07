@@ -21,8 +21,8 @@
         <property name="secondName" column="secondName" type="string"/>
         <property name="birthDate" column="birthDate" type="date"/>
         <property name="gender" column="gender" type="int"/>
-        <property name="phone" column="phone" type="long"/>
-        <property name="email" column="email" type="string"/>
+        <property name="phone" column="phone" type="long" unique="true"/>
+        <property name="email" column="email" type="string" unique="true"/>
         <property name="description" column="description" type="string"/>
     </class>
 

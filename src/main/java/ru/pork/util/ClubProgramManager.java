@@ -14,27 +14,21 @@ import java.util.List;
  */
 public class ClubProgramManager {
     SessionFactory factory;
-    String name;
 
-    ClubProgramManager() {
+    public ClubProgramManager() {
         try {
             factory= DatabaseConfigurator.getSessionFactory();
         } catch (HibernateException he) {
             he.printStackTrace();
         }
     }
-    ClubProgramManager(String name) {
-        this();
-        this.name=name;
 
-    }
 
-    public boolean addClubProgramm(){
+    public boolean addClubProgramm(ClubProgram program){
         Session session=factory.openSession();
         Transaction tx=session.beginTransaction();
 
         try {
-            ClubProgram program = new ClubProgram(name);
             session.save(program);
             tx.commit();
             session.close();
@@ -96,6 +90,25 @@ public class ClubProgramManager {
             tx.rollback();
             session.close();
             return false;
+        }
+    }
+
+    public ClubProgram findClubProgram(int id) {
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+
+        try {
+            ClubProgram program=(ClubProgram)session.get(ClubProgram.class,id);
+
+            tx.commit();
+            session.close();
+            return program;
+
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            tx.rollback();
+            session.close();
+            return null;
         }
     }
 }

@@ -37,7 +37,6 @@ public class AbonCardManager {
 
 
     public boolean addAbonCard() {
-        boolean retval;
         Session session=factory.openSession();
         Transaction tx=null;
         AbonCard card = new AbonCard(desc, price);
@@ -57,7 +56,7 @@ public class AbonCardManager {
 
     public List<AbonCard> listAllAbonCards() {
         Session session=factory.openSession();
-        Transaction tx=null;
+        Transaction tx;
         ArrayList<AbonCard> cards = new ArrayList<AbonCard>();
         tx=session.beginTransaction();
         List aboncards=session.createQuery("FROM AbonCard ").list();
