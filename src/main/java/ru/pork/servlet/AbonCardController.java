@@ -5,15 +5,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ru.pork.model.AbonCard;
 import ru.pork.model.Person;
+import ru.pork.util.AbonCardManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.PrintWriter;
+import java.util.*;
 
 
 /**
@@ -22,24 +22,25 @@ import java.util.Set;
 public class AbonCardController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session=factory.openSession();
+        resp.setContentType("text/html; charset=UTF-8");
+        PrintWriter pw = resp.getWriter();
 
-        session.beginTransaction();
-        AbonCard card1=new AbonCard((byte)0,"Standard",new Date(), new Date(),100,(byte)0,0);
-        long phone = 79265105227L;
-        Person person1 = new Person("Dima", "Ulyanov", "Mikhailovich", new Date(), (byte) 1, phone, "siilent1987@yahoo.com",
-                "First client");
-//        card1.setPersons(new HashSet<Person>());
-
-//        card1.getPersons().add(person1);
-
-        person1.setAbonCard(card1);
-        session.save(card1);
-        session.save(person1);
-
-        session.getTransaction().commit();
-        session.close();
-
+        String desc = null;
+        Integer price = null;
+        if (req.getParameter("description").length() > 0) {
+            desc = req.getParameter("description");
+        }
+        if (req.getParameter("price").length() > 0) {
+            price = Integer.valueOf(req.getParameter("price"));
+        }
+        if (price != null && desc != null) {
+            AbonCardManager abcmanager = new AbonCardManager(desc, price);
+            if (abcmanager.addAbonCard()) {
+                pw.println("<H1>Success</H1></center>");
+            } else {
+                pw.println("<H1>Fail</H1>");
+            }
+        }
+        pw.println("<a href=/>Назад</a>");
     }
 }

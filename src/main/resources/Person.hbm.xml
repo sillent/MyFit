@@ -16,7 +16,9 @@
         <property name="birthDate" column="birthDate" type="date"/>
         <property name="description" column="description" type="string"/>
         <property name="email" column="email" type="string"/>
-        <property name="gender" column="gender" type="byte"/>
+        <property name="gender" column="gender" type="int"/>
+        <property name="begin_date" column="begin_date" type="date"/>
+        <property name="expire_date" column="expire_date" type="date"/>
         <many-to-one name="abonCard" column="abonCard" class="ru.pork.model.AbonCard" not-null="true"/>
     </class>
 </hibernate-mapping>

@@ -11,7 +11,22 @@
     <title>Welcome</title>
 </head>
 <body>
-<center><H1>Фитнес Центр "Солнышко"</H1></center>
-
+<%--<center>--%>
+  <H1>Фитнес Центр "Солнышко"</H1>
+<table border="1">
+  <tr>
+    <th>Управление клиентами</th>
+    <th>Управление клубными программами</th>
+  </tr>
+  <tr>
+    <td><a href="clients_add.jsp">Создать</a></td>
+    <td><a href="clubprogram_add.jsp">Создать</a></td>
+  </tr>
+  <tr>
+    <td><a href="clients_list.jsp">Список</a></td>
+    <td><a href="clubprogram_list.jsp">Список</a></td>
+  </tr>
+</table>
+<%--</center>--%>
 </body>
 </html>

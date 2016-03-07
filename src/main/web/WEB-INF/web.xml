@@ -3,15 +3,28 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"-->
-<web-app>
-    <servlet>
-        <servlet-name>aboncardcontroller</servlet-name>
-        <servlet-class>ru.pork.servlet.AbonCardController</servlet-class>
-    </servlet>
 
+<web-app>
+    <listener>
+        <listener-class>ru.pork.servlet.HibernateListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>clientcontroller</servlet-name>
+        <servlet-class>ru.pork.servlet.ClientController</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>aboncardcontroller</servlet-name>
-        <url-pattern>/aboncard</url-pattern>
+        <servlet-name>clientcontroller</servlet-name>
+        <url-pattern>/client</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>clubprogramcontroller</servlet-name>
+        <servlet-class>ru.pork.servlet.ClubProgramController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>clubprogramcontroller</servlet-name>
+        <url-pattern>/clubprogram</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

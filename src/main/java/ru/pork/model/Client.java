@@ -1,13 +1,10 @@
 package ru.pork.model;
 
-import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
-//@Entity
-//@Table(name = "Person")
-public class Person {
-
+public class Client {
     private int id;
     private String firstName;
 
@@ -18,20 +15,22 @@ public class Person {
     private long phone;
     private String email;
     private String description;
-    private AbonCard abonCard;
 
-    private Date begin_date;
-    private Date expire_date;
+    private Set contractses;
 
-    public Person(){}
+    private ClubProgram program;
 
-    public Person(String firstName, String lastName, String secondName, Date birthDate, int gender,
-           long phone, String email, String description, Date begin_date, Date expire_date)
-    {
-        this.firstName=firstName; this.lastName=lastName; this.secondName=secondName;
-        this.birthDate=birthDate; this.gender=gender; this.phone=phone; this.email=email;
-        this.description=description; this.begin_date=begin_date; this.expire_date=expire_date;
-
+    public Client(){}
+    public Client(String description, String email, long phone, int gender, Date birthDate, String secondName, String lastName, String firstName, ClubProgram program) {
+        this.description = description;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.secondName = secondName;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.program=program;
     }
 
     public int getId() {
@@ -106,28 +105,19 @@ public class Person {
         this.description = description;
     }
 
-    public Date getBegin_date() {
-        return begin_date;
+    public Set getContractses() {
+        return contractses;
     }
 
-    public void setBegin_date(Date begin_date) {
-        this.begin_date = begin_date;
+    public void setContractses(Set contractses) {
+        this.contractses = contractses;
     }
 
-    public Date getExpire_date() {
-        return expire_date;
+    public ClubProgram getProgram() {
+        return program;
     }
 
-    public void setExpire_date(Date expire_date) {
-        this.expire_date = expire_date;
-    }
-
-    public AbonCard getAbonCard() {
-        return abonCard;
-    }
-
-    public void setAbonCard(AbonCard abonCard) {
-        this.abonCard = abonCard;
+    public void setProgram(ClubProgram program) {
+        this.program = program;
     }
 }
-
