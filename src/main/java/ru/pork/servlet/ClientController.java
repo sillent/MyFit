@@ -7,6 +7,7 @@ import ru.pork.util.ClubProgramManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,9 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by santa on 04.03.16.
- */
+
+@WebServlet(name="clientcontroller", urlPatterns = {"/client"})
 public class ClientController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -126,9 +126,6 @@ public class ClientController extends HttpServlet {
 
 
     }
-
-
-
 
 
     private Date birthdateformat(String request) {

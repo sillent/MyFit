@@ -1,18 +1,12 @@
 package ru.pork.util;
 
 import com.sun.xml.internal.ws.handler.HandlerException;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import ru.pork.model.Client;
 import ru.pork.model.Contracts;
 import ru.pork.servlet.DatabaseConfigurator;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 
 public class ClientManager {
@@ -36,9 +30,13 @@ public class ClientManager {
 
         tx=session.beginTransaction();
         try {
-            session.save(client);
-            tx.commit();
-            return true;
+            if (client.getProgram()==null) {
+                return false;
+            } else {
+                session.save(client);
+                tx.commit();
+                return true;
+            }
         } catch (HibernateException he) {
             tx.rollback();
             he.printStackTrace();
@@ -108,12 +106,13 @@ public class ClientManager {
     }
 
     public Client findClient(long phon) {
-
         Transaction tx;
         Session session=factory.openSession();
         tx=session.beginTransaction();
         try {
-            List clients=session.createQuery("FROM Client C where C.phone="+phon).list();
+            Query q=session.createQuery("from Client  C where C.phone=:phone");
+            q.setParameter("phone", phon);
+            List clients=q.list();
             for (Iterator<Client> iterator=clients.iterator();iterator.hasNext();) {
                 Client client = iterator.next();
                 if (client.getPhone()==phon) {
@@ -125,6 +124,22 @@ public class ClientManager {
             tx.commit();
             session.close();
             return null;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            tx.rollback();
+            session.close();
+            return null;
+        }
+    }
+    public Client findClient(int id) {
+        Transaction tx;
+        Session session=factory.openSession();
+        tx=session.beginTransaction();
+        try {
+            Client cl=session.get(Client.class,id);
+            tx.commit();
+            session.close();
+            return  cl;
         } catch (HibernateException he) {
             he.printStackTrace();
             tx.rollback();

@@ -10,6 +10,7 @@
   Time: 13:54
   To change this template use File | Settings | File Templates.
 --%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,7 +19,7 @@
 <body>
 
 <table border="1">
-  <th>Идентификатор</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Пол</th><th>Год рождения</th><th>Клубная прорамма</th>
+  <th>ID</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Пол</th><th>Год рождения</th><th>Клубная прорамма</th><th>Договоры</th>
   <%
     ClubProgramManager clubProgramManager=new ClubProgramManager();
 
@@ -38,7 +39,7 @@
       out.print(cl.getSecondName());
       out.print("</td>");
       out.print("<td>");
-      if (cl.getGender()==0) {
+      if (cl.getGender() == 0) {
         out.print("Муж.");
       } else
         out.print("Жен.");
@@ -49,11 +50,14 @@
       out.print("<td>");
       out.print(clubProgramManager.findClubProgram(cl.getProgram().getId()).getName());
       out.print("</td>");
-      out.print("</tr>");
+      out.print("<td>");
+      out.print("<a href='contracts_clients_list.jsp?id=");
+      out.print(cl.getId() + "'>Договора</a>");
+      out.print("</td>");
     }
   %>
   </table>
-<a href="welcome.jsp">Назад</a>
 
+<a href="welcome.jsp">Назад</a>
 </body>
 </html>

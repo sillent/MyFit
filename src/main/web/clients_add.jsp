@@ -6,10 +6,11 @@
   Time: 13:53
   To change this template use File | Settings | File Templates.
 --%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 
-<%@ page import="ru.pork.util.ClientManager" %>
-<%@ page import="ru.pork.model.Client" %>
+<%--<%@ page import="ru.pork.util.ClientManager" %>--%>
+<%--<%@ page import="ru.pork.model.Client" %>--%>
 <%@ page import="java.util.List" %>
 <%@ page import="ru.pork.model.ClubProgram" %>
 <%@ page import="ru.pork.util.ClubProgramManager" %>
@@ -24,7 +25,7 @@
     ClubProgramManager manager=new ClubProgramManager();
     List<ClubProgram> list=manager.listClubProgram();
 %>
-<form action="/client" method="get">
+<form action="client" method="get">
     <table>
     <p>
         Фамилия: <input type="text" name="lastName"/><br/>
@@ -55,8 +56,9 @@
     <p>
         <input type="submit" name="person" value="Сохранить"/><br/>
     </p>
-        </table>
+    </table>
 </form>
+<br/>
 <a href="welcome.jsp">Назад</a>
 
 </body>
