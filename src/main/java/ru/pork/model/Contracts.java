@@ -7,13 +7,16 @@ public class Contracts {
     private int id;
 
     private Date startDate;
-    private int daysActive;
+    private Date contractsBegin;
+    private Date endDate;
     private int status;
 
     public Contracts() {}
-    public Contracts( Date startDate, int daysActive, int status) {
+
+    public Contracts(Date startDate, Date contractsBegin, Date endDate, int status) {
         this.startDate = startDate;
-        this.daysActive = daysActive;
+        this.contractsBegin = contractsBegin;
+        this.endDate = endDate;
         this.status = status;
     }
 
@@ -33,12 +36,20 @@ public class Contracts {
         this.startDate = startDate;
     }
 
-    public int getDaysActive() {
-        return daysActive;
+    public Date getContractsBegin() {
+        return contractsBegin;
     }
 
-    public void setDaysActive(int daysActive) {
-        this.daysActive = daysActive;
+    public void setContractsBegin(Date contractsBegin) {
+        this.contractsBegin = contractsBegin;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public int getStatus() {
