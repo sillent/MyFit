@@ -1,15 +1,49 @@
 @startuml
-class Client {
+class Person {
       int id
       String firstName
       String lastName
       String secondName
       Date birthDate
       int state
-      int gender
-      long phone
-      String email
-      
-
+      int gender :
+      long phone : телефон
+      String email : э-мейл
 }
+class Contract {
+      int id
+      Date creationDate
+      Date contractBegin
+      Date contractEnding
+      int status
+      
+}
+class ClubProgram {
+      int id
+      String name
+      String description
+      int timeUsing
+      int daysActive
+      int price
+}
+class Membership {
+      int contract_id
+      int clubprogram_id
+}
+class Service {
+      int id
+      String name
+}
+class ServiceConsist {
+      int clubprogram_id
+      int service_id
+}
+Person "one" --* "many" Contract
+
+Contract "1..*" *-* "1..*" ClubProgram
+(Contract, ClubProgram) . Membership
+
+ClubProgram "1..*" *-* "1..*" Service
+(ClubProgram, Service) . ServiceConsist
+
 @enduml

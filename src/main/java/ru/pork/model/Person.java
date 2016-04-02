@@ -7,7 +7,6 @@ import java.util.Set;
 public class Person {
     private int id;
     private String firstName;
-
     private String lastName;
     private String secondName;
     private Date birthDate;
@@ -15,30 +14,28 @@ public class Person {
     private int gender;
     private long phone;
     private String email;
-    private String description;
 
     private Set contracts;
 
 
     public Person(){}
-    public Person(String description,
-                  String email,
-                  long phone,
-                  int gender,
-                  int state,
-                  Date birthDate,
-                  String secondName,
+
+    public Person(String firstName,
                   String lastName,
-                  String firstName) {
-        this.description = description;
-        this.email = email;
-        this.phone = phone;
-        this.gender = gender;
-        this.state=state;
-        this.birthDate = birthDate;
-        this.secondName = secondName;
-        this.lastName = lastName;
+                  String secondName,
+                  Date birthDate,
+                  int state,
+                  int gender,
+                  long phone,
+                  String email) {
         this.firstName = firstName;
+        this.lastName = lastName;
+        this.secondName = secondName;
+        this.birthDate = birthDate;
+        this.state = state;
+        this.gender = gender;
+        this.phone = phone;
+        this.email = email;
     }
 
     public int getId() {
@@ -113,19 +110,11 @@ public class Person {
         this.email = email;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set getContracts() {
+    public Set<Contracts> getContracts() {
         return contracts;
     }
 
-    public void setContracts(Set contracts) {
+    public void setContracts(Set<Contracts> contracts) {
         this.contracts = contracts;
     }
 }
