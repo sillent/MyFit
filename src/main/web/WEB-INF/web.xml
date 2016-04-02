@@ -10,12 +10,12 @@
     </listener>
 
     <servlet>
-        <servlet-name>clientcontroller</servlet-name>
-        <servlet-class>ru.pork.servlet.ClientController</servlet-class>
+        <servlet-name>personcontroller</servlet-name>
+        <servlet-class>ru.pork.servlet.PersonController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>clientcontroller</servlet-name>
-        <url-pattern>/client</url-pattern>
+        <servlet-name>personcontroller</servlet-name>
+        <url-pattern>/person</url-pattern>
     </servlet-mapping>
 
     <servlet>
