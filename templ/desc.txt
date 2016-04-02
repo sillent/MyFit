@@ -1,0 +1,15 @@
+@startuml
+class Client {
+      int id
+      String firstName
+      String lastName
+      String secondName
+      Date birthDate
+      int state
+      int gender
+      long phone
+      String email
+      
+
+}
+@enduml
