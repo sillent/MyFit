@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.pork.model.Person" table="Person">
+        <meta attribute="class-description">
+            This class describe Client detail.
+        </meta>
+        <id name="id" column="id" type="int">
+            <generator class="native"/>
+        </id>
+
+        <set name="contracts" cascade="all" lazy="true">
+            <key column="person_id"/>
+            <one-to-many class="ru.pork.model.Contracts"/>
+        </set>
+
+        <property name="firstName" column="firstName" type="string"/>
+        <property name="lastName" column="lastName" type="string"/>
+        <property name="secondName" column="secondName" type="string"/>
+        <property name="state" column="state" type="int"/>
+        <property name="birthDate" column="birthDate" type="date"/>
+        <property name="gender" column="gender" type="int"/>
+        <property name="phone" column="phone" type="long" unique="true" not-null="true"/>
+        <property name="email" column="email" type="string" unique="true"/>
+    </class>
+
+</hibernate-mapping>
