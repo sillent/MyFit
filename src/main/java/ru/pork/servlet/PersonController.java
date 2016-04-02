@@ -2,7 +2,7 @@ package ru.pork.servlet;
 
 import ru.pork.model.Person;
 import ru.pork.model.ClubProgram;
-import ru.pork.util.ClientManager;
+import ru.pork.util.PersonManager;
 import ru.pork.util.ClubProgramManager;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-@WebServlet(name="clientcontroller", urlPatterns = {"/client"})
+@WebServlet(name="personcontroller", urlPatterns = {"/person"})
 public class PersonController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,6 +29,7 @@ public class PersonController extends HttpServlet {
         String lastName="";
         String secondName="";
         Date birthDate=new Date(0L);
+        int state=0;
         int gender=0;
         long phone=0L;
         String email="unknown@localhost.localdomain";
@@ -66,6 +67,12 @@ public class PersonController extends HttpServlet {
             }
         } else {
             birthDate = new Date(0L);
+        }
+        // STATE
+        if (req.getParameter("state")!=null) {
+            if (req.getParameter("state").length() >0) {
+                state=getstate(req.getParameter("state"));
+            }
         }
         // GENDER
         if (req.getParameter("gender")!=null) {
@@ -110,10 +117,10 @@ public class PersonController extends HttpServlet {
         }
 
         // Check client exists and adding if not
-        Person person =new Person(description,email,phone,gender,birthDate,secondName,lastName,firstName,program);
+        Person person =new Person(firstName,lastName,secondName,birthDate,state,gender,phone,email);
         if ( ! checkClientExist(person) ) {
-            ClientManager clientManager = new ClientManager();
-            if (clientManager.addClient(person)) {
+            PersonManager personManager = new PersonManager();
+            if (personManager.addClient(person)) {
                 forwardIf(req, resp, "/client_add_ok.jsp");
             } else {
                 forwardIf(req, resp, "/client_add_nok.jsp");
@@ -136,7 +143,20 @@ public class PersonController extends HttpServlet {
             return new Date(0L);
         }
     }
-
+    // must be 0 or 1
+    private int getstate(String request) {
+        int state;
+        try {
+            state = Integer.parseInt(request);
+            if (state>1) {
+                state=1;  // 1 - administrator
+            }
+            return state;
+        } catch (NumberFormatException n) {
+            n.printStackTrace();
+            return 0;  // 0 - client
+        }
+    }
     private int getgender(String request) {
         int gender;
         try {
@@ -159,8 +179,8 @@ public class PersonController extends HttpServlet {
     }
 
     private boolean checkClientExist(Person person) {
-        ClientManager clientManager=new ClientManager();
-        Person cl=clientManager.findClient(person.getPhone());
+        PersonManager personManager =new PersonManager();
+        Person cl= personManager.findClient(person.getPhone());
         if (cl!=null) {
             return true;
         } else
