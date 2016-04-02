@@ -4,33 +4,41 @@ import java.util.Date;
 import java.util.Set;
 
 
-public class Client {
+public class Person {
     private int id;
     private String firstName;
 
     private String lastName;
     private String secondName;
     private Date birthDate;
+    private int state;          // 1-client, 2-administrator
     private int gender;
     private long phone;
     private String email;
     private String description;
 
-    private Set contractses;
+    private Set contracts;
 
-    private ClubProgram program;
 
-    public Client(){}
-    public Client(String description, String email, long phone, int gender, Date birthDate, String secondName, String lastName, String firstName, ClubProgram program) {
+    public Person(){}
+    public Person(String description,
+                  String email,
+                  long phone,
+                  int gender,
+                  int state,
+                  Date birthDate,
+                  String secondName,
+                  String lastName,
+                  String firstName) {
         this.description = description;
         this.email = email;
         this.phone = phone;
         this.gender = gender;
+        this.state=state;
         this.birthDate = birthDate;
         this.secondName = secondName;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.program=program;
     }
 
     public int getId() {
@@ -73,6 +81,14 @@ public class Client {
         this.birthDate = birthDate;
     }
 
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
     public int getGender() {
         return gender;
     }
@@ -105,19 +121,11 @@ public class Client {
         this.description = description;
     }
 
-    public Set getContractses() {
-        return contractses;
+    public Set getContracts() {
+        return contracts;
     }
 
-    public void setContractses(Set contractses) {
-        this.contractses = contractses;
-    }
-
-    public ClubProgram getProgram() {
-        return program;
-    }
-
-    public void setProgram(ClubProgram program) {
-        this.program = program;
+    public void setContracts(Set contracts) {
+        this.contracts = contracts;
     }
 }
