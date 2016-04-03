@@ -15,16 +15,19 @@
   <H1>Фитнес Центр "Солнышко"</H1>
 <table border="1">
   <tr>
-    <th>Управление клиентами</th>
-    <th>Управление клубными программами</th>
+    <th>Управление Person</th>
+    <th>Управление услугами</th>
+    <th>Управление Клубными программами</th>
   </tr>
   <tr>
-    <td><a href="clients_add.jsp">Новый клиент</a></td>
-    <td><a href="clubprogram_add.jsp">Добавить программу</a></td>
+    <td><a href="person/person_add.jsp">Новый человек</a></td>
+    <td><a href="service/service_add.jsp">Добавить услугу</a></td>
+    <td><a href="clubprogram/clubprogram_add.jsp">Добавить Клубную программу</a></td>
   </tr>
   <tr>
-    <td><a href="clients_list.jsp">Список клиентов</a></td>
-    <td><a href="clubprogram_list.jsp">Список программ</a></td>
+    <td><a href="person/person_list.jsp">Список людей</a></td>
+    <td><a href="service/service_list.jsp">Список услуг</a></td>
+    <td><a href="clubprogram/clubprogram_list.jsp">Список клубных программ</a></td>
   </tr>
 </table>
 </body>
