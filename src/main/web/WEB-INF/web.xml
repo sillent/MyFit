@@ -17,7 +17,14 @@
         <servlet-name>personcontroller</servlet-name>
         <url-pattern>/person</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>contractcontroller</servlet-name>
+        <servlet-class>ru.pork.servlet.ContractController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>contractcontroller</servlet-name>
+        <url-pattern>/contract</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>clubprogramcontroller</servlet-name>
         <servlet-class>ru.pork.servlet.ClubProgramController</servlet-class>
