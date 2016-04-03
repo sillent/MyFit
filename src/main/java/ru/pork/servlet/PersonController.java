@@ -1,5 +1,6 @@
 package ru.pork.servlet;
 
+import ru.pork.model.Contracts;
 import ru.pork.model.Person;
 import ru.pork.model.ClubProgram;
 import ru.pork.util.PersonManager;
@@ -33,8 +34,7 @@ public class PersonController extends HttpServlet {
         int gender=0;
         long phone=0L;
         String email="unknown@localhost.localdomain";
-        String description="";
-        ClubProgram program=null;
+
 
         // FIRSTNAME
         if (req.getParameter("firstName")!=null) {
@@ -70,8 +70,8 @@ public class PersonController extends HttpServlet {
         }
         // STATE
         if (req.getParameter("state")!=null) {
-            if (req.getParameter("state").length() >0) {
-                state=getstate(req.getParameter("state"));
+            if (req.getParameter("state").length() > 0) {
+                state = getstate(req.getParameter("state"));
             }
         }
         // GENDER
@@ -98,37 +98,19 @@ public class PersonController extends HttpServlet {
         } else {
             email = "unknown@localhost.localdomain";
         }
-        // DESCRIPTION
-        if (req.getParameter("description")!=null) {
-            if (req.getParameter("description").length() > 0) {
-                description = req.getParameter("description");
-            }
-        } else {
-            description = "";
-        }
-        if (req.getParameter("clubprogram")!=null) {
-            if (req.getParameter("clubprogram").length()>0) {
-                ClubProgramManager manager=new ClubProgramManager();
-                int id=Integer.parseInt(req.getParameter("clubprogram"));
-                program=manager.findClubProgram(id);
-            } else {
-                program=null;
-            }
-        }
 
         // Check client exists and adding if not
         Person person =new Person(firstName,lastName,secondName,birthDate,state,gender,phone,email);
         if ( ! checkClientExist(person) ) {
             PersonManager personManager = new PersonManager();
             if (personManager.addClient(person)) {
-                forwardIf(req, resp, "/client_add_ok.jsp");
+                forwardIf(req, resp, "/person/person_add_ok.jsp");
             } else {
-                forwardIf(req, resp, "/client_add_nok.jsp");
+                forwardIf(req, resp, "/person/person_add_nok.jsp");
             }
+        } else {
+            forwardIf(req, resp, "/person/person_add_exist.jsp");
         }
-
-
-
     }
 
 
@@ -138,6 +120,17 @@ public class PersonController extends HttpServlet {
         try {
             birthDate = format.parse(request);
             return birthDate;
+        } catch (ParseException pe) {
+            pe.printStackTrace();
+            return new Date(0L);
+        }
+    }
+    private Date dateformat(String request) {
+        Date formatdate;
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            formatdate=format.parse(request);
+            return formatdate;
         } catch (ParseException pe) {
             pe.printStackTrace();
             return new Date(0L);
@@ -177,14 +170,21 @@ public class PersonController extends HttpServlet {
             return 0L;
         }
     }
+    private int getstatus(String request) {
+        int status;
+        try {
+            status = Integer.parseInt(request);
+            return status;
+        } catch (NumberFormatException n) {
+            n.printStackTrace();
+            return 0;
+        }
+    }
 
     private boolean checkClientExist(Person person) {
         PersonManager personManager =new PersonManager();
         Person cl= personManager.findClient(person.getPhone());
-        if (cl!=null) {
-            return true;
-        } else
-            return false;
+        return cl != null;
     }
 
     private void forwardIf(HttpServletRequest req, HttpServletResponse resp, String url)

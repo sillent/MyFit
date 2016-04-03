@@ -26,9 +26,9 @@
     i=0;
   }
   Person cl=clm.findClient(i);
+  out.print("<a href='/contract/contracts_clients_add.jsp?id="+cl.getId()+">Создать</a>");
 %>
 </table>
-<a href="contracts_clients_add.jsp?client_id=">Создать</a><br/>
 <a href="../welcome.jsp">Назад</a>
 </body>
 </html>

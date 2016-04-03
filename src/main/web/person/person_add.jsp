@@ -8,50 +8,77 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 
-<%--<%@ page import="ru.pork.util.ClientManager" %>--%>
-<%--<%@ page import="ru.pork.model.Client" %>--%>
+
 <%@ page import="java.util.List" %>
-<%@ page import="ru.pork.model.ClubProgram" %>
 <%@ page import="ru.pork.util.ClubProgramManager" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="/codebase/dhtmlxcalendar.css"/>
+    <script src="/codebase/dhtmlxcalendar.js"></script>
+    <script>
+        var myCalendar;
+        function doOnLoad() {
+            myCalendar = new dhtmlXCalendarObject(["calendar"]);
+        }
+    </script>
     <title>Добавление клиента</title>
 
 </head>
-<body>
+<body onload="doOnLoad();">
 <jsp:useBean id="obj" class="ru.pork.util.PersonManager" scope="page"/>
 <%
-    ClubProgramManager manager=new ClubProgramManager();
-    List<ClubProgram> list=manager.listClubProgram();
+//    ClubProgramManager manager=new ClubProgramManager();
 %>
-<form action="client" method="get">
+<form action="/person" method="get">
     <table>
     <p>
-        Фамилия: <input type="text" name="lastName"/><br/>
-        Имя: <input type="text" name="firstName"/><br/>
-        Отчетство: <input type="text" name="secondName"/><br/>
+        <label>
+            Фамилия:
+            <input type="text" name="lastName"/>
+        </label><br/>
+        <label>
+            Имя:
+            <input type="text" name="firstName"/>
+        </label><br/>
+        <label>
+            Отчетство:
+            <input type="text" name="secondName"/>
+        </label><br/>
     </p>
+        <p>
+            <label>
+                Тип пользователя:
+                <select name="state">
+                        <option selected value="0">Клиент</option>
+                        <option value="1">Администратор</option>
+                </select>
+            </label>
+        </p>
     <br/>
-        <p>
-            Телефон: <input type="number" name="phone"/><br/>
-        </p>
-        <br/>
-        <p>
-           Абонемент <select name="clubprogram">
-            <% for (ClubProgram prog: list) {%>
-            <% int id=prog.getId(); pageContext.setAttribute("id",id); %>
-            <option value="${id}"><%out.print(prog.getName());%> </option>
-            <%}%>
-        </select>
-        </p>
+     <p><label>
+         Телефон:
+         <input type="number" name="phone"/>
+     </label><br/></p>
+     <br/>
     <p>
-        Дата рождения: <input type="date" name="birthDate"/><br/>
-        Муж <input type="radio" name="gender" value="0"/> Жен <input type="radio" name="gender" value="1"/><br/>
-        Email: <input type="text" name="email"/><br/>
-        Замечания: <input type="text" name="description" size="30"/><br/>
+        <label>
+            Дата рождения:
+            <input type="text" name="birthDate" id="calendar"/>
+        </label><br/>
+        <label>
+            Муж
+            <input type="radio" name="gender" value="0"/>
+        </label>
+        <label>
+            Жен
+        <input type="radio" name="gender" value="1"/>
+    </label><br/>
+        <label>
+            Email:
+            <input type="text" name="email"/>
+        </label><br/>
     </p>
     <br/>
-
     <p>
         <input type="submit" name="person" value="Сохранить"/><br/>
     </p>

@@ -2,16 +2,14 @@ package ru.pork.model;
 
 import java.util.Set;
 
-/**
- * Created by dima on 02.04.16.
- */
 public class Service {
     private int id;
     private String name;
 
     private Set<ClubProgram> programs;
-    Service() {
+    public Service() {
     }
+
 
     public Service(int id, String name) {
         this.id = id;

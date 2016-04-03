@@ -19,10 +19,8 @@
 <body>
 
 <table border="1">
-  <th>ID</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Пол</th><th>Год рождения</th><th>Клубная прорамма</th><th>Договоры</th>
+  <th>ID</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Пол</th><th>Год рождения</th><th>Договора</th>
   <%
-    ClubProgramManager clubProgramManager=new ClubProgramManager();
-
     PersonManager personManager =new PersonManager();
     for (Person cl: personManager.listClients()) {
       out.print("<tr>");
@@ -48,10 +46,7 @@
       out.print(cl.getBirthDate());
       out.print("</td>");
       out.print("<td>");
-      out.print(clubProgramManager.findClubProgram(cl.getProgram().getId()).getName());
-      out.print("</td>");
-      out.print("<td>");
-      out.print("<a href='contracts_clients_list.jsp?id=");
+      out.print("<a href='/contract/contracts_clients_list.jsp?id=");
       out.print(cl.getId() + "'>Договора</a>");
       out.print("</td>");
     }

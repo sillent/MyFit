@@ -4,9 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-/**
- * Created by santa on 29.02.16.
- */
 public class DatabaseConfigurator {
 
     private static SessionFactory factory;

@@ -5,16 +5,16 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import ru.pork.model.Contracts;
+import ru.pork.model.Person;
 import ru.pork.servlet.DatabaseConfigurator;
 
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by santa on 02.03.16.
- */
 public class ContractsManager {
     private SessionFactory factory;
+
+    Transaction trx;
 
     private Date creationDate;
     private Date contractBegin;
@@ -83,6 +83,24 @@ public class ContractsManager {
             return true;
         } catch (HibernateException he) {
             tx.rollback();
+            he.printStackTrace();
+            session.close();
+            return false;
+        }
+    }
+
+    public boolean addContractToPerson(Person person) {
+        Session session=factory.openSession();
+        trx=session.beginTransaction();
+        try {
+            Contracts contract=new Contracts(creationDate, contractBegin, contractEnding, status);
+            person.getContracts().add(contract);
+            session.save(person);
+            trx.commit();
+            session.close();
+            return true;
+        } catch (HibernateException he) {
+            trx.rollback();
             he.printStackTrace();
             session.close();
             return false;

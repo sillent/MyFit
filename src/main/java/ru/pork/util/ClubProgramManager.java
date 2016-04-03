@@ -7,9 +7,6 @@ import ru.pork.servlet.DatabaseConfigurator;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by santa on 03.03.16.
- */
 public class ClubProgramManager {
     SessionFactory factory;
 

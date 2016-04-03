@@ -8,7 +8,6 @@ import ru.pork.servlet.DatabaseConfigurator;
 
 import java.util.*;
 
-
 public class PersonManager {
     private SessionFactory factory;
 
@@ -30,13 +29,9 @@ public class PersonManager {
 
         tx=session.beginTransaction();
         try {
-            if (person.getProgram()==null) {
-                return false;
-            } else {
-                session.save(person);
-                tx.commit();
-                return true;
-            }
+            session.save(person);
+            tx.commit();
+            return true;
         } catch (HibernateException he) {
             tx.rollback();
             he.printStackTrace();
@@ -110,10 +105,10 @@ public class PersonManager {
         Session session=factory.openSession();
         tx=session.beginTransaction();
         try {
-            Query q=session.createQuery("from Client  C where C.phone=:phone");
+            Query q=session.createQuery("from Person P where P.phone=:phone");
             q.setParameter("phone", phon);
-            List clients=q.list();
-            for (Iterator<Person> iterator=clients.iterator();iterator.hasNext();) {
+            List persons=q.list();
+            for (Iterator<Person> iterator=persons.iterator();iterator.hasNext();) {
                 Person person = iterator.next();
                 if (person.getPhone()==phon) {
                     tx.commit();
