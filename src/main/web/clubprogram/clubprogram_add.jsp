@@ -22,7 +22,7 @@
   <input type="submit" value="Создать"/>
 </form>
 <br/>
-<p><a href="welcome.jsp">Назад</a></p>
+<p><a href="../welcome.jsp">Назад</a></p>
 
 </body>
 </html>

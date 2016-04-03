@@ -1,5 +1,5 @@
-<%@ page import="ru.pork.util.ClientManager" %>
-<%@ page import="ru.pork.model.Client" %>
+<%@ page import="ru.pork.util.PersonManager" %>
+<%@ page import="ru.pork.model.Person" %>
 <%@ page import="ru.pork.model.ClubProgram" %>
 <%@ page import="ru.pork.util.ClubProgramManager" %>
 <%@ page import="java.util.List" %>
@@ -23,8 +23,8 @@
   <%
     ClubProgramManager clubProgramManager=new ClubProgramManager();
 
-    ClientManager clientManager=new ClientManager();
-    for (Client cl: clientManager.listClients()) {
+    PersonManager personManager =new PersonManager();
+    for (Person cl: personManager.listClients()) {
       out.print("<tr>");
       out.print("<td>");
       out.print(cl.getId());
@@ -58,6 +58,6 @@
   %>
   </table>
 
-<a href="welcome.jsp">Назад</a>
+<a href="../welcome.jsp">Назад</a>
 </body>
 </html>

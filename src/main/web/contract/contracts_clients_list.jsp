@@ -1,5 +1,5 @@
-<%@ page import="ru.pork.util.ClientManager" %>
-<%@ page import="ru.pork.model.Client" %>
+<%@ page import="ru.pork.util.PersonManager" %>
+<%@ page import="ru.pork.model.Person" %>
 <%--
   Created by IntelliJ IDEA.
   User: dima
@@ -17,7 +17,7 @@
 <table>
 <th>Название </th>
 <%
-  ClientManager clm=new ClientManager();
+  PersonManager clm=new PersonManager();
   int i=0;
   try {
     i=Integer.parseInt(request.getParameter("id"));
@@ -25,10 +25,10 @@
     n.printStackTrace();
     i=0;
   }
-  Client cl=clm.findClient(i);
+  Person cl=clm.findClient(i);
 %>
 </table>
 <a href="contracts_clients_add.jsp?client_id=">Создать</a><br/>
-<a href="welcome.jsp">Назад</a>
+<a href="../welcome.jsp">Назад</a>
 </body>
 </html>

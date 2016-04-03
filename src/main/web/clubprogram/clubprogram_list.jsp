@@ -29,7 +29,7 @@
 %>
 </table>
 <br/>
-<a href="welcome.jsp">Назад</a>
+<a href="../welcome.jsp">Назад</a>
 
 </body>
 </html>

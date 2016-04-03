@@ -19,6 +19,6 @@
 <H1>Клубная программа <%= name %> успешно создана</H1><br/>
 <H1>Цена программы <%= price %></H1>
 <br/>
-<a href="welcome.jsp">Назад</a>
+<a href="../welcome.jsp">Назад</a>
 </body>
 </html>

@@ -1,4 +1,3 @@
-<%@ page import="ru.pork.model.AbonCard" %>
 <%--
   Created by IntelliJ IDEA.
   User: santa
@@ -20,7 +19,7 @@
 
 </head>
 <body>
-<jsp:useBean id="obj" class="ru.pork.util.ClientManager" scope="page"/>
+<jsp:useBean id="obj" class="ru.pork.util.PersonManager" scope="page"/>
 <%
     ClubProgramManager manager=new ClubProgramManager();
     List<ClubProgram> list=manager.listClubProgram();
@@ -59,7 +58,7 @@
     </table>
 </form>
 <br/>
-<a href="welcome.jsp">Назад</a>
+<a href="../welcome.jsp">Назад</a>
 
 </body>
 </html>
