@@ -5,19 +5,20 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import ru.pork.model.Contracts;
+import ru.pork.model.Person;
 import ru.pork.servlet.DatabaseConfigurator;
 
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by santa on 02.03.16.
- */
 public class ContractsManager {
     private SessionFactory factory;
 
-    private Date startDate;
-    private int daysActive;
+    Transaction trx;
+
+    private Date creationDate;
+    private Date contractBegin;
+    private Date contractEnding;
     private int status;
 
     public ContractsManager() {
@@ -29,27 +30,36 @@ public class ContractsManager {
         }
     }
 
-    public ContractsManager(Date startDate, int daysActive, int status) {
+    public ContractsManager(Date creationDate, Date contractBegin, Date contractEnding, int status) {
         this();
-        this.startDate = startDate;
-        this.daysActive = daysActive;
+        this.creationDate=creationDate;
+        this.contractBegin=contractBegin;
+        this.contractEnding=contractEnding;
         this.status = status;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public int getDaysActive() {
-        return daysActive;
+    public Date getContractBegin() {
+        return contractBegin;
     }
 
-    public void setDaysActive(int daysActive) {
-        this.daysActive = daysActive;
+    public void setContractBegin(Date contractBegin) {
+        this.contractBegin = contractBegin;
+    }
+
+    public Date getContractEnding() {
+        return contractEnding;
+    }
+
+    public void setContractEnding(Date contractEnding) {
+        this.contractEnding = contractEnding;
     }
 
     public int getStatus() {
@@ -60,20 +70,37 @@ public class ContractsManager {
         this.status = status;
     }
 
-
     public boolean addContract() {
         Transaction tx;
         Session session = factory.openSession();
         tx=session.beginTransaction();
 
         try {
-            Contracts contract = new Contracts(startDate, daysActive, status);
+            Contracts contract = new Contracts(creationDate, contractBegin, contractEnding, status);
             session.save(contract);
             tx.commit();
             session.close();
             return true;
         } catch (HibernateException he) {
             tx.rollback();
+            he.printStackTrace();
+            session.close();
+            return false;
+        }
+    }
+
+    public boolean addContractToPerson(Person person) {
+        Session session=factory.openSession();
+        trx=session.beginTransaction();
+        try {
+            Contracts contract=new Contracts(creationDate, contractBegin, contractEnding, status);
+            person.getContracts().add(contract);
+            session.save(person);
+            trx.commit();
+            session.close();
+            return true;
+        } catch (HibernateException he) {
+            trx.rollback();
             he.printStackTrace();
             session.close();
             return false;

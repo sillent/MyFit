@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.pork.model.Service" table="Service">
+        <meta attribute="class-description">
+            This class describe Service.
+        </meta>
+        <id name="id" column="id" type="int">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" column="name" type="string" not-null="true"/>
+
+        <set name="programs" table="ServiceConsist" inverse="false" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="service_id" not-null="true"/>
+            </key>
+            <many-to-many entity-name="ru.pork.model.ClubProgram">
+                <column name="clubprogram_id" not-null="true"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

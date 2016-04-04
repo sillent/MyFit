@@ -5,6 +5,7 @@
   Time: 19:35
   To change this template use File | Settings | File Templates.
 --%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
@@ -21,7 +22,7 @@
   <input type="submit" value="Создать"/>
 </form>
 <br/>
-<p><a href="welcome.jsp">Назад</a></p>
+<p><a href="../welcome.jsp">Назад</a></p>
 
 </body>
 </html>

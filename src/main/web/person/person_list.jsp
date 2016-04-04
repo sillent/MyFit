@@ -1,5 +1,5 @@
-<%@ page import="ru.pork.util.ClientManager" %>
-<%@ page import="ru.pork.model.Client" %>
+<%@ page import="ru.pork.util.PersonManager" %>
+<%@ page import="ru.pork.model.Person" %>
 <%@ page import="ru.pork.model.ClubProgram" %>
 <%@ page import="ru.pork.util.ClubProgramManager" %>
 <%@ page import="java.util.List" %>
@@ -10,6 +10,7 @@
   Time: 13:54
   To change this template use File | Settings | File Templates.
 --%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,12 +19,10 @@
 <body>
 
 <table border="1">
-  <th>Идентификатор</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Пол</th><th>Год рождения</th><th>Клубная прорамма</th>
+  <th>ID</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Пол</th><th>Год рождения</th><th>Договора</th>
   <%
-    ClubProgramManager clubProgramManager=new ClubProgramManager();
-
-    ClientManager clientManager=new ClientManager();
-    for (Client cl: clientManager.listClients()) {
+    PersonManager personManager =new PersonManager();
+    for (Person cl: personManager.listClients()) {
       out.print("<tr>");
       out.print("<td>");
       out.print(cl.getId());
@@ -38,7 +37,7 @@
       out.print(cl.getSecondName());
       out.print("</td>");
       out.print("<td>");
-      if (cl.getGender()==0) {
+      if (cl.getGender() == 0) {
         out.print("Муж.");
       } else
         out.print("Жен.");
@@ -47,13 +46,13 @@
       out.print(cl.getBirthDate());
       out.print("</td>");
       out.print("<td>");
-      out.print(clubProgramManager.findClubProgram(cl.getProgram().getId()).getName());
+      out.print("<a href='/contract/contracts_clients_list.jsp?id=");
+      out.print(cl.getId() + "'>Договора</a>");
       out.print("</td>");
-      out.print("</tr>");
     }
   %>
   </table>
-<a href="welcome.jsp">Назад</a>
 
+<a href="../welcome.jsp">Назад</a>
 </body>
 </html>

@@ -1,17 +1,12 @@
 package ru.pork.util;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import ru.pork.model.ClubProgram;
 import ru.pork.servlet.DatabaseConfigurator;
 
+import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by santa on 03.03.16.
- */
 public class ClubProgramManager {
     SessionFactory factory;
 
@@ -93,6 +88,33 @@ public class ClubProgramManager {
         }
     }
 
+    public ClubProgram findClubProgram(String name) {
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+        ClubProgram program;
+        try {
+            Query q=session.createQuery("from ClubProgram  CP where CP.name = :name");
+            q.setParameter("name", name);
+            List list=q.list();
+
+            for (Iterator<ClubProgram> iterator=list.iterator(); iterator.hasNext();) {
+                program=iterator.next();
+                if (program.getName().equals(name)) {
+                    tx.commit();
+                    session.close();
+                    return program;
+                }
+            }
+            tx.commit();
+            session.close();
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            tx.rollback();
+            session.close();
+            return null;
+        }
+        return null;
+    }
     public ClubProgram findClubProgram(int id) {
         Session session=factory.openSession();
         Transaction tx=session.beginTransaction();

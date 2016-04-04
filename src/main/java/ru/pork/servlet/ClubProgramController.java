@@ -5,18 +5,22 @@ import ru.pork.util.ClubProgramManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
-
+@WebServlet(name="clubprogramcontroller", urlPatterns = { "/clubprogram"})
 public class ClubProgramController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
         PrintWriter pw = resp.getWriter();
+
         ClubProgram clubProgram=new ClubProgram();
         if (req.getParameter("name")!=null) {
             if (req.getParameter("name").length()>0) {
@@ -29,10 +33,18 @@ public class ClubProgramController extends HttpServlet {
             }
         }
         ClubProgramManager clubProgramManager=new ClubProgramManager();
-        if (clubProgramManager.addClubProgramm(clubProgram)) {
-            forwardIf(req, resp, "/clubprogram_add_ok.jsp");
+
+        // Check program exist before adding to DB
+        if (checkProgramExist(clubProgram)) {
+            forwardIf(req,resp, "/clubprogram_add_exist.jsp");
         } else {
-            forwardIf(req, resp, "/clubprogram_add_nok.jsp");
+
+            // Adding program to DB
+            if (clubProgramManager.addClubProgramm(clubProgram)) {
+                forwardIf(req, resp, "/clubprogram_add_ok.jsp");
+            } else {
+                forwardIf(req, resp, "/clubprogram_add_nok.jsp");
+            }
         }
 
 
@@ -52,6 +64,15 @@ public class ClubProgramController extends HttpServlet {
         } else {
             return ret;
         }
+    }
+
+    public boolean checkProgramExist(ClubProgram program) {
+        ClubProgramManager manager=new ClubProgramManager();
+        ClubProgram program1=manager.findClubProgram(program.getName());
+        if (program1!=null) {
+            return true;
+        } else
+            return false;
     }
 
     private void forwardIf(HttpServletRequest req, HttpServletResponse resp, String url)
