@@ -13,16 +13,25 @@
 </head>
 <body>
 <form action="/clubprogram" method="get">
-  <p>
+  <p><label>
   Название программы: <input type="text" name="name"/><br/>
-    </p>
-  <p>
-  Цена: <input type="number" name="price"/><br/>
-    </p>
+  </label></p>
+  <p><label>
+  Описание: <input type="text" name="description"/><br/>
+  </label></p>
+  <p><label>
+    Время работы программы: <input type="text" name="timeUsing"/><br/>
+  </label></p>
+  <p><label>
+    Срок действия программы: <input type="number" name="daysActive"><br/>
+  </label></p>
+  <p><label>
+    Цена: <input type="number" name="price"/><br/>
+  </label></p>
   <input type="submit" value="Создать"/>
 </form>
 <br/>
-<p><a href="../welcome.jsp">Назад</a></p>
+<p><a href="/welcome.jsp">Назад</a></p>
 
 </body>
 </html>

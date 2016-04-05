@@ -1,6 +1,7 @@
 package ru.pork.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -15,7 +16,7 @@ public class Person {
     private long phone;
     private String email;
 
-    private Set contracts;
+    private Set<Contracts> contracts=new HashSet<Contracts>(0);
 
 
     public Person(){}

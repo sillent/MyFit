@@ -14,7 +14,7 @@
 
         <property name="name" column="name" type="string" not-null="true"/>
 
-        <set name="programs" table="ServiceConsist" inverse="false" lazy="true" fetch="select" cascade="all">
+        <set name="programs" table="ServiceConsist" inverse="false" lazy="false" fetch="select" cascade="all">
             <key>
                 <column name="service_id" not-null="true"/>
             </key>

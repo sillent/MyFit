@@ -10,11 +10,11 @@
         <id name="id" column="id" type="int">
             <generator class="native"/>
         </id>
-        <property name="creationDate" column="creationDate" type="date" unique="true" not-null="true"/>
-        <property name="contractBegin" column="contractBegin" type="date" unique="true" not-null="true"/>
-        <property name="contractEnding" column="contractEnding" type="date" unique="true" not-null="true"/>
+        <property name="creationDate" column="creationDate" type="date" not-null="true"/>
+        <property name="contractBegin" column="contractBegin" type="date" not-null="true"/>
+        <property name="contractEnding" column="contractEnding" type="date" not-null="true"/>
         <property name="status" column="status" type="int"/>
-        <set name="clubPrograms" table="Membership" inverse="false" lazy="true" fetch="select" cascade="all">
+        <set name="clubPrograms" table="Membership" inverse="false" lazy="false" fetch="select" cascade="all">
             <key>
                 <column name="contract_id" not-null="true"/>
             </key>

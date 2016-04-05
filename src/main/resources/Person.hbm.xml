@@ -12,7 +12,7 @@
             <generator class="native"/>
         </id>
 
-        <set name="contracts" cascade="all" lazy="true">
+        <set name="contracts" cascade="all" lazy="false">
             <key column="person_id"/>
             <one-to-many class="ru.pork.model.Contracts"/>
         </set>

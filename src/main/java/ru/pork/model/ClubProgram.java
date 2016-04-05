@@ -1,24 +1,25 @@
 package ru.pork.model;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ClubProgram {
     private int id;
     private String name;
     private String description;
-    private int timeUsing;
+    private String timeUsing;
     private int daysActive;
     private int price;
 
-    private Set<Contracts> contracts;
-    private Set<Service> services;
+    private Set<Contracts> contracts=new HashSet<Contracts>(0);
+    private Set<Service> services=new HashSet<Service>(0);
 
     public ClubProgram() {}
 
     public ClubProgram(String name,
                        String description,
-                       int timeUsing,
+                       String timeUsing,
                        int daysActive,
                        int price) {
         this.name = name;
@@ -52,11 +53,11 @@ public class ClubProgram {
         this.description = description;
     }
 
-    public int getTimeUsing() {
+    public String getTimeUsing() {
         return timeUsing;
     }
 
-    public void setTimeUsing(int timeUsing) {
+    public void setTimeUsing(String timeUsing) {
         this.timeUsing = timeUsing;
     }
 

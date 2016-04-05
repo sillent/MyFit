@@ -27,6 +27,21 @@ public class ClubProgramController extends HttpServlet {
                 clubProgram.setName(req.getParameter("name"));
             }
         }
+        if (req.getParameter("description") != null) {
+            if (req.getParameter("description").length()>0) {
+                clubProgram.setDescription(req.getParameter("description"));
+            }
+        }
+        if (req.getParameter("timeUsing") != null) {
+            if (req.getParameter("timeUsing").length() > 0) {
+                clubProgram.setTimeUsing(req.getParameter("timeUsing"));
+            }
+        }
+        if (req.getParameter("daysActive") != null) {
+            if (req.getParameter("daysActive").length() > 0) {
+                clubProgram.setDaysActive(getInt(req.getParameter("daysActive")));
+            }
+        }
         if (req.getParameter("price")!=null) {
             if (req.getParameter("price").length()>0) {
                 clubProgram.setPrice(getInt(req.getParameter("price")));
@@ -36,18 +51,16 @@ public class ClubProgramController extends HttpServlet {
 
         // Check program exist before adding to DB
         if (checkProgramExist(clubProgram)) {
-            forwardIf(req,resp, "/clubprogram_add_exist.jsp");
+            forwardIf(req,resp, "/clubprogram/clubprogram_add_exist.jsp");
         } else {
 
             // Adding program to DB
             if (clubProgramManager.addClubProgramm(clubProgram)) {
-                forwardIf(req, resp, "/clubprogram_add_ok.jsp");
+                forwardIf(req, resp, "/clubprogram/clubprogram_add_ok.jsp");
             } else {
-                forwardIf(req, resp, "/clubprogram_add_nok.jsp");
+                forwardIf(req, resp, "/clubprogram/clubprogram_add_nok.jsp");
             }
         }
-
-
     }
 
     private int getInt(String value) {

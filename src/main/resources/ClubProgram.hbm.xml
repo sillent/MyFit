@@ -12,11 +12,11 @@
         </id>
         <property name="name" column="name" type="string" unique="true"/>
         <property name="description" column="description" type="string"/>
-        <property name="timeUsing" column="timeUsing" type="int"/>
+        <property name="timeUsing" column="timeUsing" type="string"/>
         <property name="daysActive" column="daysActive" type="int"/>
         <property name="price" column="price" type="int"/>
 
-        <set name="contracts" table="Membership" inverse="false" lazy="true" fetch="select" cascade="all">
+        <set name="contracts" table="Membership" inverse="false" lazy="false" fetch="select" cascade="all">
             <key>
                 <column name="clubprogram_id" not-null="true"/>
             </key>
@@ -25,7 +25,7 @@
             </many-to-many>
         </set>
 
-        <set name="services" table="ServiceConsist" inverse="false" lazy="true" fetch="select" cascade="all">
+        <set name="services" table="ServiceConsist" inverse="false" lazy="false" fetch="select" cascade="all">
             <key>
                 <column name="clubprogram_id" not-null="true"/>
             </key>

@@ -5,6 +5,7 @@ import ru.pork.model.Person;
 import ru.pork.util.ContractsManager;
 import ru.pork.util.PersonManager;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,7 +56,7 @@ public class ContractController  extends HttpServlet {
 
         if (req.getParameter("person_id") != null) {
             if (req.getParameter("person_id").length() > 0) {
-                person_id = getstatus(req.getParameter("person_id"));
+                person_id = getid(req.getParameter("person_id"));
             }
         } else {
             person_id=0;
@@ -63,7 +64,11 @@ public class ContractController  extends HttpServlet {
 
         Contracts contracts = new Contracts(creationDate, contractBegin, contractEnding, status);
         PersonManager pmanager = new PersonManager();
-        pmanager.addContract(contracts, person_id);
+        if (pmanager.addContract(contracts, person_id)) {
+            forwardIf(req, resp, "/contract/contracts_clients_add_ok.jsp");
+        } else {
+            forwardIf(req, resp, "/contract/contracts_clients_add_nok.jsp");
+        }
 
 
 
@@ -91,6 +96,22 @@ public class ContractController  extends HttpServlet {
             n.printStackTrace();
             return 0;  // 0 - client
         }
+    }
+    private int getid(String request) {
+        int id;
+        try {
+            id=Integer.parseInt(request);
+            return id;
+        } catch (NumberFormatException n) {
+            n.printStackTrace();
+            return 1;
+        }
+    }
+
+    private void forwardIf(HttpServletRequest req, HttpServletResponse resp, String url)
+            throws IOException, ServletException {
+        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(req,resp);
     }
 
 

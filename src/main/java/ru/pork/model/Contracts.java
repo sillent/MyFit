@@ -1,18 +1,18 @@
 package ru.pork.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 
 public class Contracts {
     private int id;
-
     private Date creationDate;
     private Date contractBegin;
     private Date contractEnding;
     private int status;
 
-    private Set<ClubProgram> clubPrograms;
+    private Set<ClubProgram> clubPrograms=new HashSet<ClubProgram>(0);
 
 
     public Contracts() {}

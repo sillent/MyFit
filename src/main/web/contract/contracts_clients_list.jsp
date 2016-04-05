@@ -1,5 +1,8 @@
 <%@ page import="ru.pork.util.PersonManager" %>
 <%@ page import="ru.pork.model.Person" %>
+<%@ page import="ru.pork.model.Contracts" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="java.util.Date" %>
 <%--
   Created by IntelliJ IDEA.
   User: dima
@@ -14,8 +17,8 @@
     <title>Договора клиента</title>
 </head>
 <body>
-<table>
-<th>Название </th>
+<table border="1">
+<th>ID контракта</th><th>Начало действия</th><th>Окончание действия</th><th>Статус</th><th>Программы</th>
 <%
   PersonManager clm=new PersonManager();
   int i=0;
@@ -26,9 +29,42 @@
     i=0;
   }
   Person cl=clm.findClient(i);
-  out.print("<a href='/contract/contracts_clients_add.jsp?id="+cl.getId()+">Создать</a>");
+  Iterator it=cl.getContracts().iterator();
+  for (; it.hasNext();) {
+    Contracts contracts=(Contracts)it.next();
+    out.print("<tr>");
+    out.print("<td>");
+    out.print(contracts.getId());
+    out.print("</td>");
+    out.print("<td>");
+    out.print(contracts.getContractBegin());
+    out.print("</td>");
+    out.print("<td>");
+    out.print(contracts.getContractEnding());
+    out.print("</td>");
+    out.print("<td>");
+    if (contracts.getStatus()==0) {
+      out.print("Не активен");
+    } else if (contracts.getStatus()==1) {
+      if (contracts.getContractEnding().compareTo(new Date()) >= 0 ) {
+        out.print("Активен");
+      } else {
+        out.print("Не активен");
+      }
+    }
+    out.print("</td>");
+    out.print("<td>");
+    out.print("<a href='/contract/contracts_clubprogram_list.jsp?id="+contracts.getId()+"'>Список программ</a>");
+    out.print("</td>");
+    out.print("</tr>");
+  }
+
+  out.print("</table>");
+  out.print("<br/>");
+  out.print("<a href='"+"/contract/contracts_clients_add.jsp?id="+cl.getId()+"'>Создать контракт</a>");
+  out.print("<br/>");
 %>
-</table>
+  <br/>
 <a href="../welcome.jsp">Назад</a>
 </body>
 </html>

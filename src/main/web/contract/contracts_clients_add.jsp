@@ -29,7 +29,7 @@
     <br/>
     <label>
       Дата окончания действия контракта:
-      <input type="date" name="contractEnding" id="calendar2"/>
+      <input type="text" name="contractEnding" id="calendar2"/>
     </label>
     <br/>
     Cтатус:
@@ -39,7 +39,7 @@
     </label>
     <label>
       Не активен
-      <input type="radio" name="status" value="1"/>
+      <input type="radio" name="status" value="0"/>
     </label>
     <label>
         <input type="hidden" name="person_id" value="<%=request.getParameter("id")%>">

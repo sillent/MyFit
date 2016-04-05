@@ -1,15 +1,15 @@
 package ru.pork.util;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
+import ru.pork.model.ClubProgram;
 import ru.pork.model.Contracts;
 import ru.pork.model.Person;
 import ru.pork.servlet.DatabaseConfigurator;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContractsManager {
     private SessionFactory factory;
@@ -123,6 +123,39 @@ public class ContractsManager {
             tx.rollback();
             session.close();
             return null;
+        }
+    }
+    public Contracts findContractById(int id) {
+        Session session=factory.openSession();
+        trx=session.beginTransaction();
+        try {
+            Contracts contracts=session.get(Contracts.class,id);
+            trx.commit();
+            session.close();
+            return contracts;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            trx.rollback();
+            session.close();
+            return null;
+        }
+    }
+    public boolean addProgram(ClubProgram program, int contract_id) {
+        Session session=factory.openSession();
+        trx=session.beginTransaction();
+        try {
+            Contracts contracts = session.get(Contracts.class, contract_id);
+            Set<ClubProgram> programs=new HashSet<ClubProgram>();
+            programs.add(program);
+            contracts.setClubPrograms(programs);
+            session.refresh(contracts);
+            trx.commit();
+            return true;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            trx.rollback();
+            session.close();
+            return false;
         }
     }
 

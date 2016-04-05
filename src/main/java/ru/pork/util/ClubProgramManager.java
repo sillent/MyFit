@@ -2,6 +2,7 @@ package ru.pork.util;
 
 import org.hibernate.*;
 import ru.pork.model.ClubProgram;
+import ru.pork.model.Contracts;
 import ru.pork.servlet.DatabaseConfigurator;
 
 import java.util.Iterator;
@@ -131,6 +132,25 @@ public class ClubProgramManager {
             tx.rollback();
             session.close();
             return null;
+        }
+    }
+
+    public boolean addContracts(Contracts contracts, int program_id) {
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+
+        try {
+            ClubProgram program=session.get(ClubProgram.class,program_id);
+            program.getContracts().add(contracts);
+            session.update(program);
+            tx.commit();
+            session.close();
+            return true;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            tx.rollback();
+            session.close();
+            return false;
         }
     }
 }

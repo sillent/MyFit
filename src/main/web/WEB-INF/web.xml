@@ -17,6 +17,7 @@
         <servlet-name>personcontroller</servlet-name>
         <url-pattern>/person</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>contractcontroller</servlet-name>
         <servlet-class>ru.pork.servlet.ContractController</servlet-class>
@@ -25,6 +26,7 @@
         <servlet-name>contractcontroller</servlet-name>
         <url-pattern>/contract</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>clubprogramcontroller</servlet-name>
         <servlet-class>ru.pork.servlet.ClubProgramController</servlet-class>
@@ -32,6 +34,15 @@
     <servlet-mapping>
         <servlet-name>clubprogramcontroller</servlet-name>
         <url-pattern>/clubprogram</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>contractclubprogramcontroller</servlet-name>
+        <servlet-class>ru.pork.servlet.ContractClubProgramController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>contractclubprogramcontroller</servlet-name>
+        <url-pattern>/conclub</url-pattern>
     </servlet-mapping>
 
     <filter>
