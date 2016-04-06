@@ -16,22 +16,11 @@
         <property name="daysActive" column="daysActive" type="int"/>
         <property name="price" column="price" type="int"/>
 
-        <set name="contracts" table="Membership" inverse="false" lazy="false" fetch="select" cascade="all">
-            <key>
-                <column name="clubprogram_id" not-null="true"/>
-            </key>
-            <many-to-many entity-name="ru.pork.model.Contracts">
-                <column name="contract_id" not-null="true"/>
-            </many-to-many>
+
+        <set name="services" table="ServiceConsist" cascade="save-update" lazy="false">
+            <key column="clubprogram_id"/>
+            <many-to-many column="service_id" class="ru.pork.model.Service"/>
         </set>
 
-        <set name="services" table="ServiceConsist" inverse="false" lazy="false" fetch="select" cascade="all">
-            <key>
-                <column name="clubprogram_id" not-null="true"/>
-            </key>
-            <many-to-many entity-name="ru.pork.model.Service">
-                <column name="service_id" not-null="true"/>
-            </many-to-many>
-        </set>
     </class>
 </hibernate-mapping>

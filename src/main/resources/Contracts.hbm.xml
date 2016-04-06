@@ -14,13 +14,9 @@
         <property name="contractBegin" column="contractBegin" type="date" not-null="true"/>
         <property name="contractEnding" column="contractEnding" type="date" not-null="true"/>
         <property name="status" column="status" type="int"/>
-        <set name="clubPrograms" table="Membership" inverse="false" lazy="false" fetch="select" cascade="all">
-            <key>
-                <column name="contract_id" not-null="true"/>
-            </key>
-            <many-to-many entity-name="ru.pork.model.Contracts">
-                <column name="clubprogram_id" not-null="true"/>
-            </many-to-many>
+        <set name="clubPrograms" table="Membership" cascade="save-update" lazy="false">
+            <key column="contract_id"/>
+            <many-to-many column="clubprogram_id" class="ru.pork.model.ClubProgram"/>
         </set>
     </class>
 </hibernate-mapping>

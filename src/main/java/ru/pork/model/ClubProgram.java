@@ -12,7 +12,7 @@ public class ClubProgram {
     private int daysActive;
     private int price;
 
-    private Set<Contracts> contracts=new HashSet<Contracts>(0);
+//    private Set<Contracts> contracts=new HashSet<Contracts>(0);
     private Set<Service> services=new HashSet<Service>(0);
 
     public ClubProgram() {}
@@ -85,11 +85,4 @@ public class ClubProgram {
         this.services = services;
     }
 
-    public Set<Contracts> getContracts() {
-        return contracts;
-    }
-
-    public void setContracts(Set<Contracts> contracts) {
-        this.contracts = contracts;
-    }
 }

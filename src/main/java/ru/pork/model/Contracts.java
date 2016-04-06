@@ -72,6 +72,9 @@ public class Contracts {
         this.clubPrograms = clubPrograms;
     }
 
+    public Set<ClubProgram> getAllPrograms() {
+        return clubPrograms;
+    }
     public boolean equals(Object ob) {
         if (ob==null) return false;
         if (!this.getClass().equals(ob.getClass())) return false;

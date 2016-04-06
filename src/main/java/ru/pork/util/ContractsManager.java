@@ -144,11 +144,8 @@ public class ContractsManager {
         Session session=factory.openSession();
         trx=session.beginTransaction();
         try {
-            Contracts contracts = session.get(Contracts.class, contract_id);
-            Set<ClubProgram> programs=new HashSet<ClubProgram>();
-            programs.add(program);
-            contracts.setClubPrograms(programs);
-            session.refresh(contracts);
+            Contracts contracts = session.load(Contracts.class, contract_id);
+            contracts.getClubPrograms().add(program);
             trx.commit();
             return true;
         } catch (HibernateException he) {
