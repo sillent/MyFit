@@ -143,8 +143,6 @@ public class ClubProgramManager {
         try {
             ClubProgram program=session.get(ClubProgram.class,program_id);
             program.getServices().add(service);
-//            program.getContracts().add(contracts);
-//            session.update(program);
             tx.commit();
             session.close();
             return true;

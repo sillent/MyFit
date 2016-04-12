@@ -14,7 +14,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Список программ закрепленных за контрактом ${param.id}</title>
+    <title>Список программ закрепленных за договором ${param.id}</title>
 </head>
 <body>
 <table border="1">

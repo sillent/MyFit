@@ -12,6 +12,6 @@
             <generator class="native"/>
         </id>
 
-        <property name="name" column="name" type="string" not-null="true"/>
+        <property name="name" column="name" type="string" length="64" not-null="true"/>
     </class>
 </hibernate-mapping>

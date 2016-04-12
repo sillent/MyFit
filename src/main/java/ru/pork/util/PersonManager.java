@@ -15,7 +15,7 @@ public class PersonManager {
     public PersonManager() {
         try {
             factory= DatabaseConfigurator.getSessionFactory();
-        } catch (HandlerException hex ) {
+        } catch (HibernateException hex ) {
             hex.printStackTrace();
         }
     }
@@ -48,7 +48,7 @@ public class PersonManager {
         ArrayList<Person> list = new ArrayList<Person>();
         tx=session.beginTransaction();
         try {
-            List lists = session.createQuery("FROM Person").list();
+            List<Person> lists = session.createQuery("FROM Person").list();
             for (Iterator<Person> iterator = lists.iterator(); iterator.hasNext(); ) {
                 list.add(iterator.next());
             }
@@ -69,7 +69,13 @@ public class PersonManager {
         tx=session.beginTransaction();
         try {
             Person person =session.get(Person.class, id);
+
+            Iterator<Contracts> iterator=person.getContracts().iterator();
+            for (;iterator.hasNext();) {
+                this.delContracts(iterator.next(),id);
+            }
             session.delete(person);
+
             tx.commit();
             session.close();
             return true;
@@ -89,6 +95,24 @@ public class PersonManager {
             Person person = session.get(Person.class, id);
             person.getContracts().add(contracts);
             session.update(person);
+            tx.commit();
+            session.close();
+            return true;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            tx.rollback();
+            session.close();
+            return false;
+        }
+    }
+
+    public boolean delContracts(Contracts contracts, int id) {
+        Transaction tx;
+        Session session=factory.openSession();
+        tx=session.beginTransaction();
+        try {
+            Person person=session.get(Person.class, id);
+            person.getContracts().remove(contracts);
             tx.commit();
             session.close();
             return true;

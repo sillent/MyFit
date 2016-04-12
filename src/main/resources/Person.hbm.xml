@@ -17,14 +17,14 @@
             <one-to-many class="ru.pork.model.Contracts"/>
         </set>
 
-        <property name="firstName" column="firstName" type="string"/>
-        <property name="lastName" column="lastName" type="string"/>
-        <property name="secondName" column="secondName" type="string"/>
+        <property name="firstName" column="firstName" length="24" type="string"/>
+        <property name="lastName" column="lastName" length="24" type="string"/>
+        <property name="secondName" column="secondName" length="24" type="string"/>
         <property name="state" column="state" type="int"/>
         <property name="birthDate" column="birthDate" type="date"/>
         <property name="gender" column="gender" type="int"/>
         <property name="phone" column="phone" type="long" unique="true" not-null="true"/>
-        <property name="email" column="email" type="string" unique="true"/>
+        <property name="email" column="email" length="64" type="string" unique="true"/>
     </class>
 
 </hibernate-mapping>

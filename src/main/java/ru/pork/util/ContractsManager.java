@@ -147,6 +147,7 @@ public class ContractsManager {
             Contracts contracts = session.load(Contracts.class, contract_id);
             contracts.getClubPrograms().add(program);
             trx.commit();
+            session.close();
             return true;
         } catch (HibernateException he) {
             he.printStackTrace();

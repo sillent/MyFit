@@ -6,13 +6,12 @@ public class Service {
     private int id;
     private String name;
 
-    private Set<ClubProgram> programs;
+//    private Set<ClubProgram> programs;
     public Service() {
     }
 
 
-    public Service(int id, String name) {
-        this.id = id;
+    public Service( String name) {
         this.name = name;
     }
 
@@ -32,11 +31,11 @@ public class Service {
         this.name = name;
     }
 
-    public Set<ClubProgram> getPrograms() {
-        return programs;
-    }
+//    public Set<ClubProgram> getPrograms() {
+//        return programs;
+//    }
 
-    public void setPrograms(Set<ClubProgram> programs) {
-        this.programs = programs;
-    }
+//    public void setPrograms(Set<ClubProgram> programs) {
+//        this.programs = programs;
+//    }
 }

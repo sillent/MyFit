@@ -61,7 +61,7 @@
 
   out.print("</table>");
   out.print("<br/>");
-  out.print("<a href='"+"/contract/contracts_clients_add.jsp?id="+cl.getId()+"'>Создать контракт</a>");
+  out.print("<a href='"+"/contract/contracts_clients_add.jsp?id="+cl.getId()+"'>Заключить договор</a>");
   out.print("<br/>");
 %>
   <br/>

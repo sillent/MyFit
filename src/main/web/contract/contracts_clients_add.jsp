@@ -16,19 +16,19 @@
             myCalendar = new dhtmlXCalendarObject(["calendar","calendar2"]);
         }
     </script>
-    <title>Заключение контракта с человеком</title>
+    <title>Заключение договора с человеком</title>
 </head>
 <body onload="doOnLoad();">
-<h2>Заключение контракта</h2>
+<h2>Заключение договора</h2>
   <form action="/contract" method="get">
     <table>
     <label>
-      Дата начала действия контракта:
+      Дата начала действия договора:
       <input type="text" name="contractBegin" id="calendar"/>
     </label>
     <br/>
     <label>
-      Дата окончания действия контракта:
+      Дата окончания действия договора:
       <input type="text" name="contractEnding" id="calendar2"/>
     </label>
     <br/>

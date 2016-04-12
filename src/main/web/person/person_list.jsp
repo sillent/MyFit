@@ -19,7 +19,7 @@
 <body>
 
 <table border="1">
-  <th>ID</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Пол</th><th>Год рождения</th><th>Договора</th>
+  <th>ID</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Пол</th><th>Клиент/Администратор</th><th>Год рождения</th><th>Договора</th><th>Действие</th>
   <%
     PersonManager personManager =new PersonManager();
     for (Person cl: personManager.listClients()) {
@@ -43,12 +43,23 @@
         out.print("Жен.");
       out.print("</td>");
       out.print("<td>");
+      if (cl.getState() == 0) {
+        out.print("Клиент");
+      } else
+        out.print("Администратор");
+      out.print("</td>");
+      out.print("<td>");
       out.print(cl.getBirthDate());
       out.print("</td>");
       out.print("<td>");
       out.print("<a href='/contract/contracts_clients_list.jsp?id=");
       out.print(cl.getId() + "'>Договора</a>");
       out.print("</td>");
+      out.print("<td>");
+      out.print("<a href='/person_del?id=");
+      out.print(cl.getId() + "'>Удалить</a>");
+      out.print("</td>");
+      out.print("</tr>");
     }
   %>
   </table>

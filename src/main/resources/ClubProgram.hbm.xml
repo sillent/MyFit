@@ -10,8 +10,8 @@
         <id name="id" column="id" type="int">
             <generator class="native"/>
         </id>
-        <property name="name" column="name" type="string" unique="true"/>
-        <property name="description" column="description" type="string"/>
+        <property name="name" column="name" type="string" length="64" unique="true"/>
+        <property name="description" column="description" length="128" type="string"/>
         <property name="timeUsing" column="timeUsing" type="string"/>
         <property name="daysActive" column="daysActive" type="int"/>
         <property name="price" column="price" type="int"/>

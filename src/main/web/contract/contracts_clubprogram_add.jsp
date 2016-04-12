@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Добавление клубной программы к контракту</title>
+    <title>Добавление клубной программы к договору</title>
 </head>
 <body>
     Название клубной программы:

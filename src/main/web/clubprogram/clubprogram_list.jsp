@@ -14,8 +14,8 @@
     <title>Клубные программы</title>
 </head>
 <body>
-<table>
-  <th>ID</th><th>Название</th><th>Цена</th><th>Действие</th>
+<table border="1">
+  <th>ID</th><th>Название</th><th>Цена</th><th>Время работы</th><th>Срок действия</th><th>Услуги</th>
 <%
   ClubProgramManager manager=new ClubProgramManager();
   for (ClubProgram program : manager.listClubProgram()) {
@@ -23,7 +23,10 @@
     out.print("<td>");out.print(program.getId());out.print("</td>");
     out.print("<td>");out.print(program.getName());out.print("</td>");
     out.print("<td>");out.print(program.getPrice());out.print("</td>");
-    out.print("<td>");out.print("<a href='clubprogram_edit.jsp?program_id=");out.print(program.getId());out.print("'>Править</a>");out.print("</td>");
+    out.print("<td>");out.print(program.getTimeUsing());out.print("</td>");
+    out.print("<td>");out.print(program.getDaysActive());out.print("</td>");
+//    out.print("<td>");out.print("<a href='clubprogram_edit.jsp?program_id=");out.print(program.getId());out.print("'>Править</a>");out.print("</td>");
+    out.print("<td>");out.print("<a href='/clubprogram/clubprogram_service_list.jsp?program_id=");out.print(program.getId());out.print("'>Список привязанных услуг</a>");out.print("</td>");
     out.print("</tr>");
   }
 %>
