@@ -12,7 +12,7 @@
     <title>Клубная программа</title>
 </head>
 <body>
-
+<H1><p style="color:red">ОШИБКА</p></H1>
 <H1>Клубная программа <% out.print(request.getParameter("name")); %> не была создана</H1>
 <br/>
 <a href="../welcome.jsp">Назад</a>

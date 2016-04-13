@@ -139,9 +139,8 @@ public class ClubProgramManager {
     public boolean addService(Service service, int program_id) {
         Session session=factory.openSession();
         Transaction tx=session.beginTransaction();
-
         try {
-            ClubProgram program=session.get(ClubProgram.class,program_id);
+            ClubProgram program=session.load(ClubProgram.class,program_id);
             program.getServices().add(service);
             tx.commit();
             session.close();
