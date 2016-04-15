@@ -18,7 +18,7 @@
 </head>
 <body>
 <table border="1">
-  <th>ID</th><th>Название программы</th><th>Описание</th><th>Время</th><th>Срок действия</th><th>Цена</th>
+  <th>ID</th><th>Название программы</th><th>Описание</th><th>Время</th><th>Срок действия</th><th>Цена</th><th>Услуги</th>
   <tr>
     <%
       ContractsManager contractsManager=new ContractsManager();
@@ -39,6 +39,7 @@
         out.print("<td>"); out.print(program.getTimeUsing()); out.print("</td>");
         out.print("<td>"); out.print(program.getDaysActive()); out.print("</td>");
         out.print("<td>"); out.print(program.getPrice()); out.print("</td>");
+        out.print("<td>"); out.print("<a href=/clubprogram/clubprogram_service_list.jsp?program_id="+program.getId()+">Список</a>"); out.print("</td>");
       }
     %>
   </tr>
