@@ -1,12 +1,6 @@
 <%@ page import="ru.pork.util.ClubProgramManager" %>
 <%@ page import="ru.pork.model.ClubProgram" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: dima
-  Date: 06.03.16
-  Time: 19:40
-  To change this template use File | Settings | File Templates.
---%>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

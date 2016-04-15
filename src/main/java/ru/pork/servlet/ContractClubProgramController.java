@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by santa on 05.04.16.
- */
 public class ContractClubProgramController extends HttpServlet {
     public ContractClubProgramController() {}
 

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dima
-  Date: 28.02.16
-  Time: 0:17
-  To change this template use File | Settings | File Templates.
---%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
