@@ -7,17 +7,25 @@
 ** <<PersonDelController>>PersonDelController
    Обрабатывает HTTP-запросы поступающие на URI *=/person_del=*. Занимается *удалением* пользователей в DB используя класс [[PersonManager][_PersonManager_]]
 ** <<ContractController>>ContractController
-   Обрабатывает HTTP-запросы поступающие на URI */contract*. Занимается *добавлением* договоров в DB используя класс [[ContractManager][_ContractManager_]]
+   Обрабатывает HTTP-запросы поступающие на URI */contract*. Занимается *добавлением* договоров в DB используя класс [[ContractsManager][_ContractsManager_]]
 ** <<ContractClubProgramController>>ContractClubProgramController
-   Обрабатывает HTTP-запросы поступающие на URI */conclub*. Занимается *привязыванием* клубных программ к договору в связях в DB используя класс [[ContractManager][_ContractManager_]]
+   Обрабатывает HTTP-запросы поступающие на URI */conclub*. Занимается *привязыванием* клубных программ к договору в связях в DB используя класс [[ContractsManager][_ContractsManager_]]
 ** <<ClubProgramController>>ClubProgramController
    Обрабатывает HTTP-запросы поступающие на URI */clubprogram*. Занимается *добавлением* клубных программ в DB используя класс [[ClubProgramManager][_ClubProgramManager_]]
 ** <<ClubProgramServiceController>>ClubProgramServiceController
-   Обрабатывает HTTP-запросы поступающие на URI */clubprogramservice*. Занимается *привязыванием* услуг к клубной программе в связях в DB используя класс [[_ClubProgramManager][_ClubProgramManager_]]
+   Обрабатывает HTTP-запросы поступающие на URI */clubprogramservice*. Занимается *привязыванием* услуг к клубной программе в связях в DB используя класс [[ClubProgramManager][_ClubProgramManager_]]
 ** <<ServiceControl>>ServiceControl
    Обрабатывает HTTP-запросы поступающие на URI */service*. Занимается *добавлением* услуг в DB используя класс [[ServiceManager][_ServiceManager_]]
-
+** DatabaseConfigurator
+   Предназначен для открытия сессий управления Hibernate. 
+** HibernateListener 
+   Используется WEB Application Server'ом Tomcat для поднятия соединения с DB во время старт/стоп приложения
 * Классы управления
 ** <<PersonManager>>PersonManager
    Класс _Helper_ помогающий управлять добавлением класса _Person_ в DB
-
+** <<ClubProgramManager>>ClubProgramManager
+   Класс _Helper_ помогающий управлять добавлением класса _ClubProgram_ в DB
+** <<ContractsManager>>ContractsManager
+   Класс _Helper_ помогающий управлять добавлением класса _Contracts_ в DB
+** <<ServiceManager>>ServiceManager
+   Класс _Helper_ помогающий управлять добавлением класса _Service_ в DB
