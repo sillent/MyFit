@@ -39,6 +39,23 @@ public class ServiceManager {
             return false;
         }
     }
+    public boolean delService(int id) {
+        Transaction tx;
+        Session session=factory.openSession();
+        tx=session.beginTransaction();
+        try {
+            Service service=this.findService(id);
+            session.delete(service);
+            tx.commit();
+            session.close();
+            return true;
+        } catch (HibernateException he) {
+            he.printStackTrace();
+            tx.rollback();
+            session.close();
+            return false;
+        }
+    }
 
     public Service findService(int id) {
         Session session=factory.openSession();

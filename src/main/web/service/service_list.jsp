@@ -7,7 +7,7 @@
 </head>
 <body>
 <table border="1">
-  <th>ID</th><th>Название</th>
+  <th>ID</th><th>Название</th><th>Действие</th>
   <%
     ServiceManager serviceManager=new ServiceManager();
     for (Service s : serviceManager.listService()) {
@@ -17,6 +17,9 @@
       out.print("</td>");
       out.print("<td>");
       out.print(s.getName());
+      out.print("</td>");
+      out.print("<td>");
+      out.print("<a href='/service_del?service_id="+s.getId()+"'>Удалить</a>");
       out.print("</td>");
       out.print("</tr>");
     }
