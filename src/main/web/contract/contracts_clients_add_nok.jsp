@@ -1,6 +1,6 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
+<%@ include file="/header_import.jsp"%>
     <title>Добавление договора</title>
 </head>
 <body>

@@ -3,13 +3,13 @@
 <%@ page import="ru.pork.model.ClubProgram" %>
 <%@ page import="java.util.Iterator" %>
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
+<%@ include file="/header_import.jsp"%>
     <title>Список программ закрепленных за договором ${param.id}</title>
 </head>
 <body>
-<table border="1">
+<table class="center" cellpadding="10" cellspacing="5">
   <th>ID</th><th>Название программы</th><th>Описание</th><th>Время</th><th>Срок действия</th><th>Цена</th><th>Услуги</th>
   <tr>
     <%

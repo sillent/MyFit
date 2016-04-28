@@ -1,26 +1,24 @@
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<html>
-<head>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/header_import.jsp"%>
     <title>Создать клубную программу</title>
 </head>
 <body>
 <form action="/clubprogram" method="get">
   <p><label>
-  Название программы: <input type="text" name="name"/><br/>
+  Название программы:<br/> <input type="text" name="name"/><br/>
   </label></p>
   <p><label>
-  Описание: <input type="text" name="description"/><br/>
+  Описание:<br/> <input type="text" name="description"/><br/>
   </label></p>
   <p><label>
-    Время работы программы: <input type="text" name="timeUsing"/><br/>
+    Время работы программы:<br/> <input type="text" name="timeUsing"/><br/>
   </label></p>
   <p><label>
-    Срок действия программы: <input type="number" name="daysActive"><br/>
+    Срок действия программы:<br/> <input type="number" name="daysActive"><br/>
   </label></p>
   <p><label>
-    Цена: <input type="number" name="price"/><br/>
+    Цена:<br/> <input type="number" name="price"/><br/>
   </label></p>
   <input type="submit" value="Создать"/>
 </form>

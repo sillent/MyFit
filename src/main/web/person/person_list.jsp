@@ -1,18 +1,14 @@
 <%@ page import="ru.pork.util.PersonManager" %>
 <%@ page import="ru.pork.model.Person" %>
-<%@ page import="ru.pork.model.ClubProgram" %>
-<%@ page import="ru.pork.util.ClubProgramManager" %>
-<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Список всех клиентов</title>
+
+<%@ include file="/header_import.jsp" %>
+        <title>Список всех клиентов</title>
 </head>
 <body>
 
-<table border="1">
+<table class="center" cellpadding="10" cellspacing="5">
   <th>ID</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Пол</th><th>Клиент/Администратор</th><th>Год рождения</th><th>Договора</th><th>Действие</th>
   <%
     PersonManager personManager =new PersonManager();

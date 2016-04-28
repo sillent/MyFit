@@ -1,7 +1,7 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title></title>
+<%@ include file="/header_import.jsp"%>
+    <title>Добавление клубной программы к договору</title>
 </head>
 <body>
 <H1><p style="color:red">ОШИБКА</p></H1>

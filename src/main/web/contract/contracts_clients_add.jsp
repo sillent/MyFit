@@ -1,14 +1,6 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="/codebase/dhtmlxcalendar.css"/>
-    <script src="/codebase/dhtmlxcalendar.js"></script>
-    <script>
-        var myCalendar;
-        function doOnLoad() {
-            myCalendar = new dhtmlXCalendarObject(["calendar","calendar2"]);
-        }
-    </script>
+<%@ include file="/header_import.jsp"%>
     <title>Заключение договора с человеком</title>
 </head>
 <body onload="doOnLoad();">
@@ -16,16 +8,16 @@
   <form action="/contract" method="get">
     <table>
     <label>
-      Дата начала действия договора:
+      Дата начала действия договора:<br/>
       <input type="text" name="contractBegin" id="calendar"/>
     </label>
     <br/>
     <label>
-      Дата окончания действия договора:
+      Дата окончания действия договора:<br/>
       <input type="text" name="contractEnding" id="calendar2"/>
     </label>
     <br/>
-    Cтатус:
+    Cтатус:<br/>
     <label>
       Активен
       <input type="radio" name="status" value="1"/>

@@ -1,9 +1,9 @@
 <%@ page import="ru.pork.util.ServiceManager" %>
 <%@ page import="ru.pork.model.Service" %>
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
+<%@ include file="/header_import.jsp"%>
     <title>Добавление услуги к клубной программе</title>
 </head>
 <body>

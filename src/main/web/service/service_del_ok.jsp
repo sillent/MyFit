@@ -1,13 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: santa
-  Date: 21.04.16
-  Time: 13:55
-  To change this template use File | Settings | File Templates.
---%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
+<%@ include file="/header_import.jsp"%>
     <title>Удаление услуги</title>
 </head>
 <body>

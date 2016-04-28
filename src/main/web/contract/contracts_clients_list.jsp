@@ -4,14 +4,13 @@
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.Date" %>
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<html>
-<head>
+<%@ include file="/header_import.jsp"%>
     <title>Договора клиента</title>
 </head>
 <body>
-<table border="1">
+<table class="center" cellpadding="10" cellspacing="5">
 <th>ID контракта</th><th>Начало действия</th><th>Окончание действия</th><th>Статус</th><th>Программы</th>
 <%
   PersonManager clm=new PersonManager();
