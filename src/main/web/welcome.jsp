@@ -22,5 +22,6 @@
     <td><a href="clubprogram/clubprogram_list.jsp">Список клубных программ</a></td>
   </tr>
 </table>
+<img id="center" src="vitamin.jpg"/>
 </body>
 </html>
